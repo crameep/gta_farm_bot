@@ -1,0 +1,11 @@
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\GTA_Farm_Bot.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\GTA_Farm_Bot.pdb
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\PS4MacroAPI.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\PS4MacroAPI.pdb
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\PS4MacroAPI.xml
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.csproj.CoreCompileInputs.cache
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.pdb
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.csprojResolveAssemblyReference.cache
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.Forms.GTAform.resources
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.csproj.GenerateResource.Cache
