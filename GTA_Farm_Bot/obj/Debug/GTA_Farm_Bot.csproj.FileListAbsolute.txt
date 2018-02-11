@@ -9,3 +9,14 @@ C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.pdb
 C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.csprojResolveAssemblyReference.cache
 C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.Forms.GTAform.resources
 C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.csproj.GenerateResource.Cache
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.dll.config
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Imaging.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Math.Core.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Math.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Statistics.dll
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.xml
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Imaging.xml
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Math.xml
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Math.Core.xml
+C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Statistics.xml

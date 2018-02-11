@@ -1,64 +1,44 @@
 ﻿using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GTA_Farm_Bot.Classes;
+using PS4MacroAPI.Internal;
 
 namespace GTA_Farm_Bot.Scenes
 {
-    class SelectedAdversaryMode : Scene
+    class SelectAdversaryMode : Scene
     {
         public override string Name => "Selected Adversary Mode";
 
-        public static RectMap QuickJobList1 = new RectMap()
+        public static Rectangle QuickJobList = new Rectangle()
         {
-            X = 841,
-            Y = 460,
-            Width = 126,
-            Height = 150,
-            Hash = 547599908735
+            X = 844,
+            Y = 461,
+            Width = 122,
+            Height = 148
         };
 
-        public static RectMap QJ1AMSelected = new RectMap()
-        {
-            X = 843,
-            Y = 461,
-            Width = 123,
-            Height = 147,
-            Hash = 140183445733247
-        };
 
         public override bool Match(ScriptBase script)
         {
-            
+            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(QuickJobList)));
+            //Console.WriteLine(bluredHash);
 
-            if (script.MatchTemplate(QuickJobList1, 98))
+            if (bluredHash == 280920934285183)
             {
-                
-                script.Press(new DualShockState() { DPad_Down = true });
-                script.Sleep(250);
-                script.Press(new DualShockState() { DPad_Down = true });
-                script.Sleep(250);
-                
-                
-            }
-            
-
-            if (script.MatchTemplate(QJ1AMSelected, 95))
-            {
-                
+               
                 return true;
             }
-
             else return false;
 
         }
 
         public override void OnMatched(ScriptBase script)
         {
-            //Console.WriteLine("Adversary Mode Selected Matched");
-
             script.Press(new DualShockState() { Cross = true });
             script.Sleep(250);
             script.Press(new DualShockState() { Cross = true });

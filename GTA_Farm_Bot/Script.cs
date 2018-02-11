@@ -13,10 +13,13 @@ namespace GTA_Farm_Bot
     {
         private int loopNumber;
         private int BadLoops;
+        private int lostRounds = 0;
+   
 
         public GTAform GTAform { get; private set; } 
         public bool Debugs { get; private set; }
-        
+ 
+
 
         /* Constructor */
         public Script()
@@ -26,16 +29,19 @@ namespace GTA_Farm_Bot
             Config.LoopDelay = 2000;
             Config.ShowFormOnStart = true;
 
-        Config.Scenes = new List<Scene>()
+            Config.Scenes = new List<Scene>()
             {
                 new PhoneMenu(),
-                new SelectedAdversaryMode(),
+                new PreFeaturedQuickJobList(),
+                new SelectAdversaryMode(),
                 new WaitingForTeam(),
                 new TheJump(),
                 new VoteNextJob(),
                 new Alert(),
                 new Offline(),
-                new Loading()
+                new Loading(), 
+                new NotInGame(),
+                new Loser()
             };
             ScriptForm = GTAform = new GTAform();
 
@@ -47,12 +53,14 @@ namespace GTA_Farm_Bot
         public override void Start()
         {
             base.Start();
+            
         }
 
         // Called every interval set by LoopDelay
         public override void Update()
         {
             Scene scene = null;
+            
             int loopNumber = this.loopNumber++;
             GTAform.SetLoopNumber(loopNumber);
             HandleScenes(s =>
@@ -70,7 +78,7 @@ namespace GTA_Farm_Bot
             {
                 int BadLoops = this.BadLoops++;
                 GTAform.SetCurrentScene("Can't Detect Scene");
-                if (this.BadLoops >= 50)
+                if (this.BadLoops >= 20)
                 {
                     if (GTAform.GetDebugging()) GTAform.LogThis("Moving to prevent AFK");
                     SetButtons(new DualShockState() { LX = 0 });
@@ -90,9 +98,20 @@ namespace GTA_Farm_Bot
             }
 
 
-            if (scene != null) BadLoops = 0;
+            if (scene != null)
+            {
 
 
+                BadLoops = 0;
+                if (scene.Name == "Loser")
+                {
+
+                    lostRounds++;
+                    GTAform.LogThis("Lost " + lostRounds + " rounds.");
+                }
+            }
+
+
+            }
         }
-    }
 }

@@ -1,0 +1,715 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PS4MacroAPI</name>
+    </assembly>
+    <members>
+        <member name="T:PS4MacroAPI.ScriptConfig">
+            <summary>
+            Config for scripts
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.ScriptConfig.DEFAULT_SCREEN_WIDTH">
+            <summary>
+            Default width for TargetSize
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.ScriptConfig.DEFAULT_SCREEN_HEIGHT">
+            <summary>
+            Default height for TargetSize
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.Name">
+            <summary>
+            Name of the script
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.LoopDelay">
+            <summary>
+            Delay between updates
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.TargetSize">
+            <summary>
+            Target size for PS4 Remote Play
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.ThrowExceptions">
+            <summary>
+            Should throw exceptions
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.ShowStackTrace">
+            <summary>
+            Show stack trace when exception is thrown
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.ShowError">
+            <summary>
+            Show error message box
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.EnableCapture">
+            <summary>
+            Enable capture screenshots
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.CaptureFromBackground">
+            <summary>
+            Enable capture from background
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.ShowFormOnStart">
+            <summary>
+            Show form when script is started
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.AutoFormLocation">
+            <summary>
+            Automatically move form when shown
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptConfig.Scenes">
+            <summary>
+            List of scenes for scenes API
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptConfig.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:PS4MacroAPI.ScriptConfig"/>
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.Internal.BackgroundCapture">
+            <summary>
+            Provides functions to capture the entire screen, or a particular window, and save it to a file.
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.BackgroundCapture.CaptureScreen">
+            <summary>
+            Creates an Image object containing a screen shot of the entire desktop
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.BackgroundCapture.CaptureWindow(System.IntPtr)">
+            <summary>
+            Creates an Image object containing a screen shot of a specific window
+            </summary>
+            <param name="handle">The handle to the window. (In windows forms, this is obtained by the Handle property)</param>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.BackgroundCapture.CaptureWindowToFile(System.IntPtr,System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Captures a screen shot of a specific window, and saves it to a file
+            </summary>
+            <param name="handle"></param>
+            <param name="filename"></param>
+            <param name="format"></param>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.BackgroundCapture.CaptureScreenToFile(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Captures a screen shot of the entire desktop, and saves it to a file
+            </summary>
+            <param name="filename"></param>
+            <param name="format"></param>
+        </member>
+        <member name="T:PS4MacroAPI.Internal.BackgroundCapture.GDI32">
+            <summary>
+            Helper class containing Gdi32 API functions
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.Internal.BackgroundCapture.User32">
+            <summary>
+            Helper class containing User32 API functions
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.Internal.ImageHashing">
+            <summary>
+            Contains a variety of methods useful in generating image hashes for image comparison
+            and recognition.
+            
+            Credit for the AverageHash implementation to David Oftedal of the University of Oslo.
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.Internal.ImageHashing.bitCounts">
+            <summary>
+            Bitcounts array used for BitCount method (used in Similarity comparisons).
+            Don't try to read this or understand it, I certainly don't. Credit goes to
+            David Oftedal of the University of Oslo, Norway for this. 
+            http://folk.uio.no/davidjo/computing.php
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ImageHashing.BitCount(System.UInt64)">
+            <summary>
+            Counts bits (duh). Utility function for similarity.
+            I wouldn't try to understand this. I just copy-pasta'd it
+            from Oftedal's implementation. It works.
+            </summary>
+            <param name="num">The hash we are counting.</param>
+            <returns>The total bit count.</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ImageHashing.AverageHash(System.Drawing.Image)">
+            <summary>
+            Computes the average hash of an image according to the algorithm given by Dr. Neal Krawetz
+            on his blog: http://www.hackerfactor.com/blog/index.php?/archives/432-Looks-Like-It.html.
+            </summary>
+            <param name="image">The image to hash.</param>
+            <returns>The hash of the image.</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ImageHashing.AverageHash(System.String)">
+            <summary>
+            Computes the average hash of the image content in the given file.
+            </summary>
+            <param name="path">Path to the input file.</param>
+            <returns>The hash of the input file's image content.</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ImageHashing.Similarity(System.UInt64,System.UInt64)">
+            <summary>
+            Returns a percentage-based similarity value between the two given hashes. The higher
+            the percentage, the closer the hashes are to being identical.
+            </summary>
+            <param name="hash1">The first hash.</param>
+            <param name="hash2">The second hash.</param>
+            <returns>The similarity percentage.</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ImageHashing.Similarity(System.Drawing.Image,System.Drawing.Image)">
+            <summary>
+            Returns a percentage-based similarity value between the two given images. The higher
+            the percentage, the closer the images are to being identical.
+            </summary>
+            <param name="image1">The first image.</param>
+            <param name="image2">The second image.</param>
+            <returns>The similarity percentage.</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ImageHashing.Similarity(System.String,System.String)">
+            <summary>
+            Returns a percentage-based similarity value between the image content of the two given
+            files. The higher the percentage, the closer the image contents are to being identical.
+            </summary>
+            <param name="path1">The first image file.</param>
+            <param name="path2">The second image file.</param>
+            <returns>The similarity percentage.</returns>
+        </member>
+        <member name="T:PS4MacroAPI.Internal.ScriptUtility">
+            <summary>
+            Utility class for scripts
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.FindProcess">
+            <summary>
+            Find PS4 Macro process
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.FindRemotePlayProcess">
+            <summary>
+            Find PS4 Remote Play process
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.FindStreamingPanel(System.Diagnostics.Process)">
+            <summary>
+            Find the streaming panel of PS4 Remote Play
+            </summary>
+            <param name="remotePlayProcess"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.LoadScripts(System.String)">
+            <summary>
+            Load scripts from path
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.LoadScript(System.String)">
+            <summary>
+            Load a script from path
+            </summary>
+            <param name="dllFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.CreateTempWindowControl">
+            <summary>
+            Create a window control temporarily
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.CaptureFrame(System.Boolean)">
+            <summary>
+            One shot method for CaptureFrame
+            </summary>
+            <param name="backgroundMode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.GetWindowSize">
+            <summary>
+            One shot method for GetWindowSize
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PS4MacroAPI.Internal.ScriptUtility.ResizeWindow(System.Drawing.Size,System.Boolean)">
+            <summary>
+            One shot method for ResizeWindow
+            </summary>
+            <param name="size"></param>
+            <param name="fixedSize"></param>
+        </member>
+        <member name="M:PS4MacroAPI.DualShockState.Serialize(System.String,System.Collections.Generic.List{PS4MacroAPI.DualShockState})">
+            <summary>
+            Serialize a list of DualShockState to xml file
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.DualShockState.Deserialize(System.String)">
+            <summary>
+            Deserialize a list of DualShockState from xml file
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.IScriptHost">
+            <summary>
+            Interface for ScriptHost class
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.IScriptHost.HostForm">
+            <summary>
+            The host form
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.IScriptHost.IsRunning">
+            <summary>
+            Is the host running
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.IScriptHost.IsPaused">
+            <summary>
+            Is the host paused
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.IScriptHost.Worker">
+            <summary>
+            The background worker
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.Sleep(System.Int32,System.Int32)">
+            <summary>
+            Wait and block execution for a certian amount of time
+            </summary>
+            <param name="timeout"></param>
+            <param name="checkInterval"></param>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.Suspend(System.Int32)">
+            <summary>
+            Suspend update for a certain amount of time
+            </summary>
+            <param name="delay"></param>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.PlayMacro(System.Collections.Generic.List{PS4MacroAPI.DualShockState},System.Int32)">
+            <summary>
+            Play a macro
+            </summary>
+            <param name="sequence"></param>
+            <param name="suspendDelay"></param>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.PlayMacro(System.String,System.Int32)">
+            <summary>
+            Play a macro from path
+            </summary>
+            <param name="path"></param>
+            <param name="suspendDelay"></param>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.StopMacro">
+            <summary>
+            Stop the macro
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.Play">
+            <summary>
+            Play the script
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.Pause">
+            <summary>
+            Pause the script
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.IScriptHost.Stop">
+            <summary>
+            Stop the script
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.PixelMap">
+            <summary>
+            Pixel template for matching
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.PixelMap.ID">
+            <summary>
+            Gets or sets the ID of this <see cref="T:PS4MacroAPI.PixelMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.PixelMap.X">
+            <summary>
+            Gets or sets the x-coordinate of this <see cref="T:PS4MacroAPI.PixelMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.PixelMap.Y">
+            <summary>
+            Gets or sets the y-coordinate of this <see cref="T:PS4MacroAPI.PixelMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.PixelMap.Color">
+            <summary>
+            Gets or sets the color this <see cref="T:PS4MacroAPI.PixelMap"/>
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.ScriptBase">
+            <summary>
+            Entry point for all scripts
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.ScriptBase.DEFAULT_PIXEL_TOLERANCE">
+            <summary>
+            The default pixel tolerance
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.ScriptBase.DEFAULT_RECT_TOLERANCE">
+            <summary>
+            The default rectangle tolerance
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.ScriptBase.DEFAULT_PRESS_BUTTONS_DELAY">
+            <summary>
+            The default press buttons delay
+            </summary>
+        </member>
+        <member name="F:PS4MacroAPI.ScriptBase.DEFAULT_SLEEP_CHECK_INTERVAL">
+            <summary>
+            The default sleep check interval delay
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.Host">
+            <summary>
+            Thes script host
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.Config">
+            <summary>
+            Script configuration
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.ScriptForm">
+            <summary>
+            Script form
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.IsInitialized">
+            <summary>
+            Is the script initialized
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.CurrentState">
+            <summary>
+            The current button state
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.CurrentFrame">
+            <summary>
+            The current screenshot frame
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.RemotePlayProcess">
+            <summary>
+            Reference to PS4 Remote Play process
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.ScriptBase.WindowControl">
+            <summary>
+            Internal object for controlling windows
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.Start">
+            <summary>
+            Called when the user pressed play
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.Update">
+            <summary>
+            Called every interval set by LoopDelay
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.OnStopped">
+            <summary>
+            Called when the user pressed stop
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.OnPaused">
+            <summary>
+            Called when the user pressed pause
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.OnMacroLapEnter(System.Object)">
+            <summary>
+            Called when macro enters a new lap
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:PS4MacroAPI.ScriptBase"/>
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.Initialize">
+            <summary>
+            Called when loop is created
+            </summary>
+            <returns>Returns true on success</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.Press(PS4MacroAPI.DualShockState,System.Int32)">
+            <summary>
+            Press buttons
+            </summary>
+            <param name="state"></param>
+            <param name="delay"></param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.SetButtons(PS4MacroAPI.DualShockState)">
+            <summary>
+            Set buttons manually
+            </summary>
+            <param name="state"></param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.ClearButtons">
+            <summary>
+            Clear buttons manually
+            </summary>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.CaptureFrame">
+            <summary>
+            Take a screenshot as bitmap
+            </summary>
+            <returns>Returns the captured screenshot</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.CropFrame(System.Drawing.Bitmap,System.Drawing.Rectangle)">
+            <summary>
+            Crop a bitmap
+            </summary>
+            <param name="frame"></param>
+            <param name="rect"></param>
+            <returns>Returns the cropped bitmap</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.CropFrame(System.Drawing.Rectangle)">
+            <summary>
+            Crop current frame
+            </summary>
+            <param name="rect"></param>
+            <returns>Returns the cropped frame</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.GetPixel(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            Get pixel from a bitmap
+            </summary>
+            <param name="frame"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns>Returns the color</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Get pixel from current frame
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns>Returns the color</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(System.Drawing.Bitmap,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Match color template on a bitmap
+            </summary>
+            <param name="frame"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+            <param name="tolerance"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Match color template on current frame
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+            <param name="tolerance"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(System.Drawing.Bitmap,PS4MacroAPI.PixelMap,System.Int32)">
+            <summary>
+            Match PixelMap on a bitmap
+            </summary>
+            <param name="frame"></param>
+            <param name="pixel"></param>
+            <param name="tolerance"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(PS4MacroAPI.PixelMap,System.Int32)">
+            <summary>
+            Match PixelMap on current frame
+            </summary>
+            <param name="pixel"></param>
+            <param name="tolerance"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(System.Drawing.Bitmap,System.Drawing.Rectangle,System.UInt64,System.Double)">
+            <summary>
+            Match rectangle template on a bitmap
+            </summary>
+            <param name="frame"></param>
+            <param name="rect"></param>
+            <param name="targetHash"></param>
+            <param name="similarity"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(System.Drawing.Rectangle,System.UInt64,System.Double)">
+            <summary>
+            Match rectangle template bitmap on current frame
+            </summary>
+            <param name="rect"></param>
+            <param name="targetHash"></param>
+            <param name="similarity"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(System.Drawing.Bitmap,PS4MacroAPI.RectMap,System.Double)">
+            <summary>
+            Match RectMap on a bitmap
+            </summary>
+            <param name="frame"></param>
+            <param name="rect"></param>
+            <param name="similarity"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.MatchTemplate(PS4MacroAPI.RectMap,System.Double)">
+            <summary>
+            Match RectMap on current frame
+            </summary>
+            <param name="rect"></param>
+            <param name="similarity"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.HandleScenes(System.Action{PS4MacroAPI.Scene})">
+            <summary>
+            Helper method for scenes API
+            </summary>
+            <param name="beforeEnter"></param>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.Sleep(System.Int32,System.Int32)">
+            <summary>
+            Wait and block execution for a certian amount of time
+            </summary>
+            <param name="timeout"></param>
+            <param name="checkInterval"></param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.Suspend(System.Int32)">
+            <summary>
+            Suspend update for a certain amount of time
+            </summary>
+            <param name="delay"></param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.PlayMacro(System.Collections.Generic.List{PS4MacroAPI.DualShockState},System.Int32)">
+            <summary>
+            Play a macro
+            </summary>
+            <param name="sequence"></param>
+            <param name="suspendDelay"></param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.PlayMacro(System.String,System.Int32)">
+            <summary>
+            Play a macro from path
+            </summary>
+            <param name="path"></param>
+            <param name="suspendDelay"></param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:PS4MacroAPI.ScriptBase.StopMacro">
+            <summary>
+            Stop the macro
+            </summary>
+            <returns>Returns self</returns>
+        </member>
+        <member name="T:PS4MacroAPI.RectMap">
+            <summary>
+            Retangle template for matching
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.RectMap.ID">
+            <summary>
+            Gets or sets the ID of this <see cref="T:PS4MacroAPI.RectMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.RectMap.X">
+            <summary>
+            Gets or sets the x-coordinate of this <see cref="T:PS4MacroAPI.RectMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.RectMap.Y">
+            <summary>
+            Gets or sets the y-coordinate of this <see cref="T:PS4MacroAPI.RectMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.RectMap.Width">
+            <summary>
+            Gets or sets the width of this <see cref="T:PS4MacroAPI.RectMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.RectMap.Height">
+            <summary>
+            Gets or sets the height of this <see cref="T:PS4MacroAPI.RectMap"/>
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.RectMap.Hash">
+            <summary>
+            Gets or sets the hash of this <see cref="T:PS4MacroAPI.RectMap"/>
+            </summary>
+        </member>
+        <member name="T:PS4MacroAPI.Scene">
+            <summary>
+            Base class for all scenes
+            </summary>
+        </member>
+        <member name="P:PS4MacroAPI.Scene.Name">
+            <summary>
+            Name of the scene
+            </summary>
+        </member>
+        <member name="M:PS4MacroAPI.Scene.Match(PS4MacroAPI.ScriptBase)">
+            <summary>
+            Test a condition to match this scene
+            </summary>
+            <param name="script"></param>
+            <returns>Returns true if matched</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Scene.OnMatched(PS4MacroAPI.ScriptBase)">
+            <summary>
+            Called when the scene is matched
+            </summary>
+            <param name="script"></param>
+        </member>
+        <member name="M:PS4MacroAPI.Scene.Search(PS4MacroAPI.ScriptBase)">
+            <summary>
+            Sort by search priority (frequent scenes first)
+            </summary>
+            <param name="script"></param>
+            <returns>The matched scene</returns>
+        </member>
+        <member name="M:PS4MacroAPI.Scene.CreateID(PS4MacroAPI.Scene,System.String)">
+            <summary>
+            Create a unique ID for a scene
+            </summary>
+            <param name="instance"></param>
+            <param name="name"></param>
+            <returns>The ID string</returns>
+        </member>
+    </members>
+</doc>

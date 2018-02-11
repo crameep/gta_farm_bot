@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <AutoInject>false</AutoInject>
+  <BypassInjection>false</BypassInjection>
+  <EmulateController>false</EmulateController>
+  <ShowConsole>true</ShowConsole>
+  <StartupFile>GTA_Farm_Bot.dll</StartupFile>
+</Settings>
