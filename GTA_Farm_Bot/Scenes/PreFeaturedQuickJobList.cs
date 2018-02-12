@@ -12,7 +12,7 @@ namespace GTA_Farm_Bot.Scenes
 {
     class PreFeaturedQuickJobList : Scene
     {
-        public override string Name => "Selected Adversary Mode";
+        public override string Name => "Pre Featured Job List";
 
 
         public static Rectangle QuickJobList = new Rectangle()
@@ -26,17 +26,18 @@ namespace GTA_Farm_Bot.Scenes
         public override bool Match(ScriptBase script)
         {
             ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(QuickJobList)));
+           /// Console.WriteLine(bluredHash);
 
             if (bluredHash == 547599908735)
             {
-                Console.WriteLine("Pre Featured Adversary QuickJobList");
+                //Console.WriteLine("Pre Featured Adversary QuickJobList");
                 return true;
 
             }
 
             else
             {
-                
+                //Console.WriteLine(bluredHash);
                 return false;
             }
 

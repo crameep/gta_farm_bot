@@ -30,8 +30,10 @@ namespace GTA_Farm_Bot.Scenes
 
         public override void OnMatched(ScriptBase script)
         {
-            
 
+            var mainscript = script as Script;
+            mainscript.IncreaseLossCount();
+            mainscript.IncreaseRoundCount();
         }
     }
 }

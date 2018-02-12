@@ -54,7 +54,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
             {
-            return !script.MatchTemplate(SpectatingText,95) && script.MatchTemplate(TimeText, 95);
+            return !script.MatchTemplate(SpectatingText,92) && script.MatchTemplate(TimeText, 92);
             }
 
 
@@ -62,14 +62,9 @@ namespace GTA_Farm_Bot.Scenes
             {
                 script.CaptureFrame();
                 script.SetButtons(new DualShockState() { LY = 0 });
-                script.Sleep(15000);
+                script.Sleep(13000);
                 script.Press(new DualShockState() { Cross = true });
-                script.Sleep(15000);
-                script.SetButtons(new DualShockState() { LY = 255 });
-                script.Sleep(5000);
-                script.SetButtons(new DualShockState() { LY = 128 });
                 script.Sleep(1000);
-
             }
         }
     }

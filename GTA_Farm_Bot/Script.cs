@@ -1,8 +1,12 @@
-﻿using GTA_Farm_Bot.Forms;
+﻿using Accord.Imaging.Filters;
+using GTA_Farm_Bot.Classes;
+using GTA_Farm_Bot.Forms;
 using GTA_Farm_Bot.Scenes;
 using PS4MacroAPI;
+using PS4MacroAPI.Internal;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,16 +36,23 @@ namespace GTA_Farm_Bot
             Config.Scenes = new List<Scene>()
             {
                 new PhoneMenu(),
+                new FeaturedQuickJobList(),
                 new PreFeaturedQuickJobList(),
                 new SelectAdversaryMode(),
-                new WaitingForTeam(),
+                new Spectating(),
                 new TheJump(),
+                new Parachute(),
                 new VoteNextJob(),
                 new Alert(),
                 new Offline(),
-                new Loading(), 
+                new GameSetup(),
+                new Loading(),
+                new Loser(),
+                new Freemode(),
                 new NotInGame(),
-                new Loser()
+                new Loser(),
+                new BlueError(),
+                new NotInGame(),
             };
             ScriptForm = GTAform = new GTAform();
 
@@ -63,6 +74,7 @@ namespace GTA_Farm_Bot
             
             int loopNumber = this.loopNumber++;
             GTAform.SetLoopNumber(loopNumber);
+            GTAform.SetBadLoopNumber(this.BadLoops);
             HandleScenes(s =>
             {
                 scene = s;
@@ -76,24 +88,37 @@ namespace GTA_Farm_Bot
            
             if (scene == null)
             {
+                
+                Bitmap Image = Helper.BlurFilter(CaptureFrame());
+                //GTAform.DisplayImage(Helper.BlurFilter(CaptureFrame()));
+                ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(Image));
+
+
+                if (GTAform.GetDebugging()) GTAform.LogThis("Greyscale Hash: " + bluredHash);
+
+
                 int BadLoops = this.BadLoops++;
                 GTAform.SetCurrentScene("Can't Detect Scene");
                 if (this.BadLoops >= 20)
                 {
                     if (GTAform.GetDebugging()) GTAform.LogThis("Moving to prevent AFK");
-                    SetButtons(new DualShockState() { LX = 0 });
-                    SetButtons(new DualShockState() { LY = 0 });
+                    //SetButtons(new DualShockState() { RX = 0 });
+                    SetButtons(new DualShockState() { RY = 0 });
                     Sleep(3000);
-                    SetButtons(new DualShockState() { LX = 128 });
-                    SetButtons(new DualShockState() { LY = 128 });
+                    //SetButtons(new DualShockState() { RX = 128 });
+                    SetButtons(new DualShockState() { RY = 128 });
 
                 }
             }
 
+            if (this.BadLoops >= 21 && GTAform.GetDebugging()) GTAform.SetBadLoopNumber(this.BadLoops);
+
             if (this.BadLoops >= 100)
             {
                 BadLoops = 0;
-                GTAform.LogThis("A whole lot of bad loops detected are we in a game?");
+                if (GTAform.GetDebugging()) GTAform.LogThis("A whole lot of bad loops detected are we in a game?");
+                CaptureFrame();
+                Sleep(3000);
                 Press(new DualShockState() { DPad_Up = true });
             }
 
@@ -113,5 +138,25 @@ namespace GTA_Farm_Bot
 
 
             }
+
+        public void updateImage(Bitmap image)
+        {
+            GTAform.DisplayImage(image);
         }
+
+        public void IncreaseRoundCount()
+        {
+            GTAform.IncreaseRoundCount();
+        }
+
+        public void IncreaseWinCount()
+        {
+            GTAform.IncreaseWinCount();
+        }
+
+        public void IncreaseLossCount()
+        {
+            GTAform.IncreaseLossCount();
+        }
+    }
 }

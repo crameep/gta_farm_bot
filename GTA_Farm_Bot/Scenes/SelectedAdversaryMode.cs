@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GTA_Farm_Bot.Classes;
 using PS4MacroAPI.Internal;
+using GTA_Farm_Bot.Forms;
 
 namespace GTA_Farm_Bot.Scenes
 {
@@ -21,30 +22,37 @@ namespace GTA_Farm_Bot.Scenes
             Width = 122,
             Height = 148
         };
-
+        
 
         public override bool Match(ScriptBase script)
         {
             ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(QuickJobList)));
-            //Console.WriteLine(bluredHash);
+            var mainscript = script as Script;
+            Bitmap posterizedimage = Helper.PosterizeFilter(script.CropFrame(QuickJobList));
 
-            if (bluredHash == 280920934285183)
+           // mainscript.GTAform.DisplayImage(Helper.BlurFilter(posterizedimage));
+
+            if (bluredHash == 140183445929855 || bluredHash == 140185576636160)
             {
                
                 return true;
             }
+
             else return false;
 
         }
 
         public override void OnMatched(ScriptBase script)
         {
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(250);
+
+                script.Press(new DualShockState() { Cross = true });
+                script.Sleep(250);
+                script.Press(new DualShockState() { Cross = true });
+                script.Sleep(250);
+                script.Press(new DualShockState() { Cross = true });
+                script.Sleep(250);
+      
+
         }
     }
 }

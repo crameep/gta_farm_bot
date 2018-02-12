@@ -1,6 +1,9 @@
-﻿using PS4MacroAPI;
+﻿using GTA_Farm_Bot.Classes;
+using PS4MacroAPI;
+using PS4MacroAPI.Internal;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,17 +30,35 @@ namespace GTA_Farm_Bot.Scenes
             Height = 17,
             Hash = 122593390559232
         };
+        public static Rectangle JoiningRect = new Rectangle()
+        {
+            X = 874,
+            Y = 618,
+            Width = 93,
+            Height = 17,
+        };
 
         public override bool Match(ScriptBase script)
         {
+            var mainscript = script as Script;
+            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(JoiningRect)));            
+            Bitmap blurredImage= Helper.BlurFilter(script.CropFrame(JoiningRect));
+            //mainscript.GTAform.DisplayImage(blurredImage);
 
-            return script.MatchTemplate(LoadingText, 97) || script.MatchTemplate(JoiningText, 97);
+            double sim = ImageHashing.Similarity(bluredHash, 123145302249472);
+            Console.WriteLine(ImageHashing.Similarity(bluredHash, 123145302249472));
+
+            if (sim >= 92)
+            {
+                return true;
+            }
+            else return false;
         }
 
         public override void OnMatched(ScriptBase script)
         {
             
-            script.Sleep(30000);
+            script.Sleep(1000);
 
 
         }

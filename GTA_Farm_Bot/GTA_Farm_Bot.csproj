@@ -47,6 +47,15 @@
     <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net46\Accord.Statistics.dll</HintPath>
     </Reference>
+    <Reference Include="asprise-ocr-api, Version=15.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\asprise-ocr-api.15.3.1.0\lib\net40\asprise-ocr-api.dll</HintPath>
+    </Reference>
+    <Reference Include="asprise-ocr-dll-bundle-32, Version=15.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\asprise-ocr-dll-bundle-32.15.3.1.0\lib\net40\asprise-ocr-dll-bundle-32.dll</HintPath>
+    </Reference>
+    <Reference Include="asprise-ocr-dll-bundle-64, Version=15.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\asprise-ocr-dll-bundle-64.15.3.1.0\lib\net40\asprise-ocr-dll-bundle-64.dll</HintPath>
+    </Reference>
     <Reference Include="PS4MacroAPI">
       <HintPath>..\..\..\..\Documents\PS4Macro_0_5_2\PS4MacroAPI.dll</HintPath>
     </Reference>
@@ -63,33 +72,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Classes\SettingsData.cs" />
     <Compile Include="Forms\GTAform.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\GTAform.Designer.cs">
       <DependentUpon>GTAform.cs</DependentUpon>
     </Compile>
+    <Compile Include="OcrSampleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OcrSampleForm.Designer.cs" />
+    <Compile Include="OcrSampleForm1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OcrSampleForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Scenes\BlueError.cs" />
+    <Compile Include="Scenes\Freemode.cs" />
+    <Compile Include="Scenes\Winner.cs" />
     <Compile Include="Scenes\Loser.cs" />
     <Compile Include="Scenes\NotInGame.cs" />
     <Compile Include="Scenes\Loading.cs" />
     <Compile Include="Scenes\Offline.cs" />
     <Compile Include="Scenes\Alert.cs" />
     <Compile Include="Scenes\LookingForJob.cs" />
+    <Compile Include="Scenes\GameSetup.cs" />
     <Compile Include="Scenes\PhoneMenu.cs" />
+    <Compile Include="Scenes\FeaturedQuickjobList.cs" />
     <Compile Include="Scenes\SelectedAdversaryMode.cs" />
     <Compile Include="Scenes\PreFeaturedQuickJobList.cs" />
+    <Compile Include="Scenes\Parachuting.cs" />
     <Compile Include="Scenes\TheJump.cs" />
     <Compile Include="Scenes\VoteNextJob.cs" />
-    <Compile Include="Scenes\WaitingForTeam.cs" />
+    <Compile Include="Scenes\Spectating.cs" />
     <Compile Include="Script.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ReadMe-AspriseOCR.txt" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\GTAform.resx">
       <DependentUpon>GTAform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OcrSampleForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OcrSampleForm1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
