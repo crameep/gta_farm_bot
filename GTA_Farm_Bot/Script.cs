@@ -89,14 +89,6 @@ namespace GTA_Farm_Bot
             if (scene == null)
             {
                 
-                Bitmap Image = Helper.BlurFilter(CaptureFrame());
-                //GTAform.DisplayImage(Helper.BlurFilter(CaptureFrame()));
-                ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(Image));
-
-
-                if (GTAform.GetDebugging()) GTAform.LogThis("Greyscale Hash: " + bluredHash);
-
-
                 int BadLoops = this.BadLoops++;
                 GTAform.SetCurrentScene("Can't Detect Scene");
                 if (this.BadLoops >= 20)

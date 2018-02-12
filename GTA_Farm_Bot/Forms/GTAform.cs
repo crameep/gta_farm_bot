@@ -15,6 +15,8 @@ namespace GTA_Farm_Bot.Forms
 {
     public partial class GTAform : Form
     {
+        private string str;
+
         public GTAform()
         {
             InitializeComponent();
@@ -43,6 +45,19 @@ namespace GTA_Farm_Bot.Forms
                
            
         }
+
+        public string GetSceneDebug()
+        {
+            
+            BeginInvoke(new Action(() => {
+
+
+                str =  SceneDebugComboBox.SelectedItem.ToString();
+            }));
+
+            return str;
+        }
+
         public void LogThis(string text)
         {
             BeginInvoke(new Action(() => {

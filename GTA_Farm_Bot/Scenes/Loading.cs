@@ -32,19 +32,29 @@ namespace GTA_Farm_Bot.Scenes
         };
         public static Rectangle JoiningRect = new Rectangle()
         {
-            X = 874,
+            X = 861,
             Y = 618,
-            Width = 93,
+            Width = 75,
             Height = 17,
         };
 
         public override bool Match(ScriptBase script)
         {
             var mainscript = script as Script;
+
+
+            if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
+            {
+                ulong lastHash = mainscript.GTAform.GetImageHash();
+                Bitmap image = script.CropFrame(JoiningRect);
+                double comparedHashes = ImageHashing.Similarity(mainscript.GTAform.GetImageHash(), ImageHashing.AverageHash(image));
+                mainscript.GTAform.LogThis("Compared Loading Images with a " + comparedHashes + "% similarity");
+                mainscript.updateImage(image);
+            }
+
             ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(JoiningRect)));            
             Bitmap blurredImage= Helper.BlurFilter(script.CropFrame(JoiningRect));
-            //mainscript.GTAform.DisplayImage(blurredImage);
-
+           
             double sim = ImageHashing.Similarity(bluredHash, 123145302249472);
             Console.WriteLine(ImageHashing.Similarity(bluredHash, 123145302249472));
 

@@ -45,6 +45,8 @@
             this.RoundsWonLabel = new System.Windows.Forms.Label();
             this.RoundsLostText = new System.Windows.Forms.Label();
             this.RoundsLostLabel = new System.Windows.Forms.Label();
+            this.SceneDebugComboBox = new System.Windows.Forms.ComboBox();
+            this.SceneDebugLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImageBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,11 +205,42 @@
             this.RoundsLostLabel.TabIndex = 14;
             this.RoundsLostLabel.Text = "Rounds Lost: ";
             // 
+            // SceneDebugComboBox
+            // 
+            this.SceneDebugComboBox.FormattingEnabled = true;
+            this.SceneDebugComboBox.Items.AddRange(new object[] {
+            "Loading",
+            "Offline",
+            "Phone Menu",
+            "Pre Featured Adversary",
+            "Featured Adversary",
+            "Adversary Mode Selected",
+            "Winner",
+            "Loser",
+            "Game Setup",
+            "Freemode"});
+            this.SceneDebugComboBox.Location = new System.Drawing.Point(320, 219);
+            this.SceneDebugComboBox.Name = "SceneDebugComboBox";
+            this.SceneDebugComboBox.Size = new System.Drawing.Size(196, 21);
+            this.SceneDebugComboBox.TabIndex = 16;
+            this.SceneDebugComboBox.Text = "Choose a scene to debug";
+            // 
+            // SceneDebugLabel
+            // 
+            this.SceneDebugLabel.AutoSize = true;
+            this.SceneDebugLabel.Location = new System.Drawing.Point(243, 223);
+            this.SceneDebugLabel.Name = "SceneDebugLabel";
+            this.SceneDebugLabel.Size = new System.Drawing.Size(73, 13);
+            this.SceneDebugLabel.TabIndex = 17;
+            this.SceneDebugLabel.Text = "Scene Debug";
+            // 
             // GTAform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 593);
+            this.Controls.Add(this.SceneDebugLabel);
+            this.Controls.Add(this.SceneDebugComboBox);
             this.Controls.Add(this.RoundsLostText);
             this.Controls.Add(this.RoundsLostLabel);
             this.Controls.Add(this.RoundsWonText);
@@ -252,5 +285,7 @@
         private System.Windows.Forms.Label RoundsWonLabel;
         private System.Windows.Forms.Label RoundsLostText;
         private System.Windows.Forms.Label RoundsLostLabel;
+        private System.Windows.Forms.ComboBox SceneDebugComboBox;
+        private System.Windows.Forms.Label SceneDebugLabel;
     }
 }

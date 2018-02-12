@@ -39,14 +39,15 @@ namespace GTA_Farm_Bot.Scenes
         public override bool Match(ScriptBase script)
             {
             var mainscript = script as Script;
-         //  if (mainscript.GTAform.GetDebugging())
-         //  {
-         //      ulong lastHash = mainscript.GTAform.GetImageHash();
-         //      Bitmap image = script.CropFrame(SettingsRect);
-         //      double comparedHashes = ImageHashing.Similarity(547608297343, ImageHashing.AverageHash(image));
-         //      mainscript.GTAform.LogThis("Compared FQJL Images with a " + comparedHashes + "% similarity");
-         //      mainscript.updateImage(image);
-         //  }
+           if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
+           {
+               ulong lastHash = mainscript.GTAform.GetImageHash();
+               Bitmap image = script.CropFrame(SettingsRect);
+               double comparedHashes = ImageHashing.Similarity(547608297343, ImageHashing.AverageHash(image));
+               mainscript.GTAform.LogThis("Compared FQJL Images with a " + comparedHashes + "% similarity");
+               mainscript.updateImage(image);
+           }
+
             return script.MatchTemplate(Settings,92);
             }
 

@@ -85,12 +85,12 @@ namespace GTA_Farm_Bot.Scenes
             
             var mainscript = script as Script;
       
-            if (mainscript.GTAform.GetDebugging())
+            if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
             {
                 ulong lastHash = mainscript.GTAform.GetImageHash();
-                Bitmap image = script.CropFrame(TimeTextRect);
+                Bitmap image = script.CropFrame(CharacterRect);
                 double comparedHashes = ImageHashing.Similarity(Character3.Hash, ImageHashing.AverageHash(image));
-                mainscript.GTAform.LogThis("Compared Freemode Images with a " + comparedHashes + "% similarity");
+                mainscript.GTAform.LogThis("Compared Freemode Images with our character hash " + comparedHashes + "% similarity");
                 mainscript.updateImage(image);
             }
             
