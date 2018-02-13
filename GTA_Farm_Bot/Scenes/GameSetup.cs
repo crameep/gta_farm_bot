@@ -1,4 +1,5 @@
-﻿using GTA_Farm_Bot.Forms;
+﻿using GTA_Farm_Bot.Classes;
+using GTA_Farm_Bot.Forms;
 using PS4MacroAPI;
 using PS4MacroAPI.Internal;
 using System;
@@ -16,7 +17,7 @@ namespace GTA_Farm_Bot.Scenes
             
             public override string Name => "Game Setup";
 
-            public static RectMap Settings = new RectMap()
+            public static RectMap SettingsText = new RectMap()
             {
                 X = 252,
                 Y = 187,
@@ -25,30 +26,11 @@ namespace GTA_Farm_Bot.Scenes
                 Hash = 139081770018304
             };
 
-        public static Rectangle SettingsRect = new Rectangle()
-        {
-            X = 252,
-            Y = 187,
-            Width = 53,
-            Height = 17,
-       
-        };
-
-
-
-        public override bool Match(ScriptBase script)
+         public override bool Match(ScriptBase script)
             {
-            var mainscript = script as Script;
-           if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
-           {
-               ulong lastHash = mainscript.GTAform.GetImageHash();
-               Bitmap image = script.CropFrame(SettingsRect);
-               double comparedHashes = ImageHashing.Similarity(Settings.Hash, ImageHashing.AverageHash(image));
-               mainscript.GTAform.LogThis("Compared Game Setup Image Images with a " + comparedHashes + "% similarity");
-               mainscript.updateImage(image);
-           }
+            Helper.SceneDebugger(script, SettingsText, this);
 
-            return script.MatchTemplate(Settings,92);
+            return script.MatchTemplate(SettingsText,92);
             }
 
 

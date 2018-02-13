@@ -23,7 +23,7 @@ namespace GTA_Farm_Bot.Scenes
                 Y = 303,
                 Width = 169,
                 Height = 352,
-                Hash = 139081770018304
+                Hash = 38604374015
             };
 
         public static RectMap Character2 = new RectMap()
@@ -37,11 +37,11 @@ namespace GTA_Farm_Bot.Scenes
 
         public static RectMap Character3 = new RectMap()
         {
-            X = 376,
+            X = 275,
             Y = 303,
-            Width = 169,
+            Width = 300,
             Height = 352,
-            Hash = 9114845974543404815
+            Hash = 6876995561665791751
         };
 
         
@@ -82,18 +82,8 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
             {
-            
-            var mainscript = script as Script;
-      
-            if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
-            {
-                ulong lastHash = mainscript.GTAform.GetImageHash();
-                Bitmap image = script.CropFrame(CharacterRect);
-                double comparedHashes = ImageHashing.Similarity(Character3.Hash, ImageHashing.AverageHash(image));
-                mainscript.GTAform.LogThis("Compared Freemode Images with our character hash " + comparedHashes + "% similarity");
-                mainscript.updateImage(image);
-            }
-            
+
+            Helper.SceneDebugger(script, Character3, this, true, true, 0, null, 60);
             return script.MatchTemplate(Character3, 65) && !script.MatchTemplate(TimeText, 50) && !script.MatchTemplate(PhoneMenu, 60);
             }
 

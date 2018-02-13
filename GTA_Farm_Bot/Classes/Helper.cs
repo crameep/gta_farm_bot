@@ -39,7 +39,7 @@ namespace GTA_Farm_Bot.Classes
             return r;
         }
 
-        public static void SceneDebugger(ScriptBase script, RectMap rectMap, Scene scene)
+        public static void SceneDebugger(ScriptBase script, RectMap rectMap, Scene scene, bool blurred = false, bool posterized = false, int interval = 0, String s = null, byte posterInterval = 150)
         {
 
             var mainscript = script as Script;
@@ -49,9 +49,16 @@ namespace GTA_Farm_Bot.Classes
             {
                 ulong lastHash = mainscript.GTAform.GetImageHash();
                 Bitmap image = script.CropFrame(Helper.RectmapToRectangle(rectMap));
-                double comparedHashes = ImageHashing.Similarity(rectMap.Hash, ImageHashing.AverageHash(image));
-                mainscript.GTAform.LogThis("Compared " + scene.Name + " Images with our hash " + comparedHashes + "% similarity");
+                ulong hash = ImageHashing.AverageHash(image);
+                if (posterized) image = Helper.PosterizeFilter(image, posterInterval);
+                if (blurred) image = Helper.BlurFilter(image);                
+                double comparedHashes = ImageHashing.Similarity(rectMap.Hash, hash);
+                image.Save(scene.Name.Replace(" ","") + "_" + hash + "_" + comparedHashes + ".png");
+                if (s == null) s = scene.Name;
+                mainscript.GTAform.LogThis("Compared " + s + " Images with our hash " + comparedHashes + "% similarity");
                 mainscript.updateImage(image);
+                //Sleep incase we have multiple images to check :)
+                mainscript.Sleep(interval);
             }
 
         }

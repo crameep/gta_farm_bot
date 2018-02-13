@@ -26,19 +26,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-
-            var mainscript = script as Script;
-
-            if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
-            {
-                ulong lastHash = mainscript.GTAform.GetImageHash();
-                Bitmap image = script.CropFrame(Helper.RectmapToRectangle(JobList));
-                double comparedHashes = ImageHashing.Similarity(JobList.Hash, ImageHashing.AverageHash(image));
-                mainscript.GTAform.LogThis("Compared Freemode Images with our character hash " + comparedHashes + "% similarity");
-                mainscript.updateImage(image);
-            }
-
-
+            Helper.SceneDebugger(script, JobList, this);
             return script.MatchTemplate(JobList, 98); 
             
         }

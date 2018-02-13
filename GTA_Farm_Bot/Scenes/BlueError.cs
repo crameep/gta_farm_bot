@@ -79,7 +79,7 @@ namespace GTA_Farm_Bot.Scenes
            // ((Script)script).IncreaseCrashCount();
 
             // Wait
-            script.Sleep(30000);
+            script.Sleep(60000);
 
             // Exit blue error
             script.Press(new DualShockState() { Circle = true });

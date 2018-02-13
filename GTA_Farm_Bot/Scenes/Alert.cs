@@ -1,4 +1,5 @@
-﻿using PS4MacroAPI;
+﻿using GTA_Farm_Bot.Classes;
+using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace GTA_Farm_Bot.Scenes
         public override bool Match(ScriptBase script)
         {
 
+            Helper.SceneDebugger(script, AlertText, this);
             return script.MatchTemplate(AlertText, 95);
         }
 

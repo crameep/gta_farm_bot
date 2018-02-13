@@ -15,24 +15,29 @@ namespace GTA_Farm_Bot.Scenes
     {
         public override string Name => "Selected Adversary Mode";
 
-        public static Rectangle QuickJobList = new Rectangle()
+        public static RectMap QuickJobList = new RectMap()
         {
             X = 844,
             Y = 461,
             Width = 122,
-            Height = 148
+            Height = 148, 
+            Hash = 140183445929855
+
         };
         
 
         public override bool Match(ScriptBase script)
         {
-            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(QuickJobList)));
-            var mainscript = script as Script;
-            Bitmap posterizedimage = Helper.PosterizeFilter(script.CropFrame(QuickJobList));
+            
+            Bitmap image = script.CropFrame(Helper.RectmapToRectangle(QuickJobList));
+            image = Helper.PosterizeFilter(image, 90);
+            image = Helper.BlurFilter(image);
+            ulong hash = ImageHashing.AverageHash(image);          
+            
 
-           // mainscript.GTAform.DisplayImage(Helper.BlurFilter(posterizedimage));
+            Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90);
 
-            if (bluredHash == 140183445929855 || bluredHash == 140185576636160)
+            if (ImageHashing.Similarity(QuickJobList.Hash, hash) >= 99)
             {
                
                 return true;

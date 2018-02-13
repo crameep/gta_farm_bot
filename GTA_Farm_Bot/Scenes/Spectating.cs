@@ -1,4 +1,5 @@
-﻿using PS4MacroAPI;
+﻿using GTA_Farm_Bot.Classes;
+using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace GTA_Farm_Bot.Scenes
     {
         public override string Name => "Spectating";
 
-        public static RectMap WaitingTeam = new RectMap()
+        public static RectMap SpectatingText = new RectMap()
         {
             X = 23,
             Y = 93,
@@ -24,8 +25,8 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-            
-            return script.MatchTemplate(WaitingTeam, 93);
+            Helper.SceneDebugger(script, SpectatingText, this);
+            return script.MatchTemplate(SpectatingText, 93);
         }
 
         public override void OnMatched(ScriptBase script)

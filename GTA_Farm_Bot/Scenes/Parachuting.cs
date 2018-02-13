@@ -1,4 +1,5 @@
-﻿using GTA_Farm_Bot.Forms;
+﻿using GTA_Farm_Bot.Classes;
+using GTA_Farm_Bot.Forms;
 using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
             {
+            Helper.SceneDebugger(script, PlayerParachute, this, true, true);
             return script.MatchTemplate(PlayerParachute,65) && script.MatchTemplate(TimeText, 90);
             }
 

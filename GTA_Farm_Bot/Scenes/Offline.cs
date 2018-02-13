@@ -1,4 +1,5 @@
-﻿using PS4MacroAPI;
+﻿using GTA_Farm_Bot.Classes;
+using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,8 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-
-            return script.MatchTemplate(OfflinePhone, 80) && script.MatchTemplate(OfflineSpecialBar,95) || script.MatchTemplate(OfflineSpecialBar, 95);
+            Helper.SceneDebugger(script, OfflineSpecialBar, this);
+            return script.MatchTemplate(OfflineSpecialBar, 95);
         }
 
         public override void OnMatched(ScriptBase script)

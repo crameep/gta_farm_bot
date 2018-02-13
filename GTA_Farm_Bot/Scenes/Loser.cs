@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Accord.Imaging.Filters;
+using GTA_Farm_Bot.Classes;
 
 namespace GTA_Farm_Bot.Scenes
 {
@@ -24,7 +25,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-
+            Helper.SceneDebugger(script, LoserText, this);
             return script.MatchTemplate(LoserText, 95);
         }
 

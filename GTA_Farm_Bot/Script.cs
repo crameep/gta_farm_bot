@@ -37,20 +37,20 @@ namespace GTA_Farm_Bot
             {
                 new PhoneMenu(), //SceneDebugger Working
                 new FeaturedQuickJobList(),//SceneDebugger Working
-                new PreFeaturedQuickJobList(),
-                new SelectAdversaryMode(),
-                new Spectating(),
-                new TheJump(),
-                new Parachute(),
-                new VoteNextJob(),
-                new Alert(),
-                new Offline(),
-                new GameSetup(),
-                new Loading(),
-                new Loser(),
-                new Freemode(),
+                new PreFeaturedQuickJobList(), //SceneDebugger Working
+                new SelectAdversaryMode(), // SceneDebugger Working
+                new Spectating(), // SceneDebugger Working
+                new TheJump(), //SceneDebugger Working
+                new Parachute(), //SceneDebugger Working
+                new VoteNextJob(), //SceneDebugger Working
+                new Alert(), //SceneDebugger Working
+                new Offline(), //SceneDebugger Working
+                new GameSetup(), //SceneDebugger Working
+                new Loading(), //SceneDebugger Working
+                new Loser(), //SceneDebugger Working
+                new Freemode(), //SceneDebugger Working
                 new NotInGame(),
-                new Loser(),
+                new Winner(),
                 new BlueError(),
                 new NotInGame(),
             };

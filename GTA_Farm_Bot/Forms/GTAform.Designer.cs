@@ -211,7 +211,18 @@
             this.SceneDebugComboBox.Items.AddRange(new object[] {
             "Phone Menu",
             "Featured QuickJobList",
-            "Pre Featured Job List"});
+            "Pre Featured Job List",
+            "Selected Adversary Mode",
+            "Spectating",
+            "The Jump",
+            "Parachuting",
+            "Vote For Next Map",
+            "Alert",
+            "Offline",
+            "Game Setup",
+            "Loading",
+            "Round Loser",
+            "Freemode"});
             this.SceneDebugComboBox.Location = new System.Drawing.Point(320, 219);
             this.SceneDebugComboBox.Name = "SceneDebugComboBox";
             this.SceneDebugComboBox.Size = new System.Drawing.Size(196, 21);
