@@ -21,15 +21,19 @@ namespace GTA_Farm_Bot.Scenes
             Y = 461,
             Width = 122,
             Height = 148,
-            Hash = 547599908735
+            Hash = 140183580147583
         };
 
         public override bool Match(ScriptBase script)
         {
-            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(Helper.RectmapToRectangle(QuickJobList))));
-            Helper.SceneDebugger(script, QuickJobList, this);
+            Bitmap image = script.CropFrame(Helper.RectmapToRectangle(QuickJobList));
+            image = Helper.PosterizeFilter(image, 90);
+            image = Helper.BlurFilter(image);
+            ulong hash = ImageHashing.AverageHash(image);
 
-            if (bluredHash == 547599908735)
+
+            Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90);
+            if (hash == QuickJobList.Hash)
             {
                 
                 return true;
