@@ -15,29 +15,30 @@ namespace GTA_Farm_Bot.Scenes
         public override string Name => "Pre Featured Job List";
 
 
-        public static Rectangle QuickJobList = new Rectangle()
+        public static RectMap QuickJobList = new RectMap()
         {
             X = 844,
             Y = 461,
             Width = 122,
-            Height = 148
+            Height = 148,
+            Hash = 547599908735
         };
 
         public override bool Match(ScriptBase script)
         {
-            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(QuickJobList)));
-           /// Console.WriteLine(bluredHash);
+            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(Helper.RectmapToRectangle(QuickJobList))));
+            Helper.SceneDebugger(script, QuickJobList, this);
 
             if (bluredHash == 547599908735)
             {
-                //Console.WriteLine("Pre Featured Adversary QuickJobList");
+                
                 return true;
 
             }
 
             else
             {
-                //Console.WriteLine(bluredHash);
+                
                 return false;
             }
 
@@ -45,7 +46,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override void OnMatched(ScriptBase script)
         {
-            //Console.WriteLine("Adversary Mode Selected Matched");
+           
 
             script.Press(new DualShockState() { DPad_Down = true });
             script.Sleep(250);

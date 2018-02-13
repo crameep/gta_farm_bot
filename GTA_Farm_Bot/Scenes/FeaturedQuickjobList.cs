@@ -12,31 +12,24 @@ namespace GTA_Farm_Bot.Scenes
 {
     class FeaturedQuickJobList : Scene
     {
-        public override string Name => "Featured QuickJoblist";
+        public override string Name => "Featured QuickJobList";
 
 
-        public static Rectangle QuickJobList = new Rectangle()
+        public static RectMap QuickJobList = new RectMap()
         {
             X = 844,
             Y = 461,
             Width = 122,
-            Height = 148
+            Height = 148, 
+            Hash = 547608297343
         };
 
         public override bool Match(ScriptBase script)
         {
-            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(QuickJobList)));
+            ulong bluredHash = ImageHashing.AverageHash(Helper.BlurFilter(script.CropFrame(Helper.RectmapToRectangle(QuickJobList))));
 
-            var mainscript = script as Script;
 
-          //  if (mainscript.GTAform.GetDebugging())
-          //  {
-          //      ulong lastHash = mainscript.GTAform.GetImageHash();
-          //      Bitmap image = script.CropFrame(QuickJobList);
-          //      double comparedHashes = ImageHashing.Similarity(547608297343, ImageHashing.AverageHash(image));
-          //      mainscript.GTAform.LogThis("Compared FQJL Images with a " + comparedHashes + "% similarity");
-          //      mainscript.updateImage(image);
-          //  }
+            Helper.SceneDebugger(script, QuickJobList, this);
 
             if (bluredHash == 547608297343)
             {
@@ -47,7 +40,7 @@ namespace GTA_Farm_Bot.Scenes
 
             else
             {
-               // Console.WriteLine(bluredHash);
+               
                 return false;
             }
 
@@ -55,7 +48,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override void OnMatched(ScriptBase script)
         {
-            //Console.WriteLine("Adversary Mode Selected Matched");
+           
 
             script.Press(new DualShockState() { DPad_Down = true });
             script.Sleep(250);

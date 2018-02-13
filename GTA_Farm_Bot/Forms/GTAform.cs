@@ -94,15 +94,16 @@ namespace GTA_Farm_Bot.Forms
         {
             BeginInvoke(new Action(() => {
                 int RoundsPlayed = Convert.ToInt32(RoundsPlayedText.Text);
-                RoundsPlayed = RoundsPlayed++;
+                RoundsPlayed = RoundsPlayed + 1;
                 RoundsPlayedText.Text = RoundsPlayed.ToString();
+                RoundsPlayedText.Refresh();
             }));
         }
         public void IncreaseWinCount()
         {
             BeginInvoke(new Action(() => {
                 int RoundsWon = Convert.ToInt32(RoundsWonText.Text);
-                RoundsWon = RoundsWon++;
+                RoundsWon = RoundsWon + 1;
                 RoundsWonText.Text = RoundsWon.ToString();
             }));
         }
@@ -110,7 +111,7 @@ namespace GTA_Farm_Bot.Forms
         {
             BeginInvoke(new Action(() => {
                 int RoundsLost = Convert.ToInt32(RoundsLostText.Text);
-                RoundsLost = RoundsLost++;
+                RoundsLost = RoundsLost + 1;
                 RoundsLostText.Text = RoundsLost.ToString();
             }));
         }

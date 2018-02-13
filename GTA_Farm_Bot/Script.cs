@@ -35,8 +35,8 @@ namespace GTA_Farm_Bot
 
             Config.Scenes = new List<Scene>()
             {
-                new PhoneMenu(),
-                new FeaturedQuickJobList(),
+                new PhoneMenu(), //SceneDebugger Working
+                new FeaturedQuickJobList(),//SceneDebugger Working
                 new PreFeaturedQuickJobList(),
                 new SelectAdversaryMode(),
                 new Spectating(),
@@ -96,9 +96,11 @@ namespace GTA_Farm_Bot
                     if (GTAform.GetDebugging()) GTAform.LogThis("Moving to prevent AFK");
                     //SetButtons(new DualShockState() { RX = 0 });
                     SetButtons(new DualShockState() { RY = 0 });
+                    SetButtons(new DualShockState() { LY = 0 });
                     Sleep(3000);
                     //SetButtons(new DualShockState() { RX = 128 });
                     SetButtons(new DualShockState() { RY = 128 });
+                    SetButtons(new DualShockState() { LY = 128 });
 
                 }
             }
@@ -120,12 +122,7 @@ namespace GTA_Farm_Bot
 
 
                 BadLoops = 0;
-                if (scene.Name == "Loser")
-                {
-
-                    lostRounds++;
-                    GTAform.LogThis("Lost " + lostRounds + " rounds.");
-                }
+                
             }
 
 

@@ -209,16 +209,9 @@
             // 
             this.SceneDebugComboBox.FormattingEnabled = true;
             this.SceneDebugComboBox.Items.AddRange(new object[] {
-            "Loading",
-            "Offline",
             "Phone Menu",
-            "Pre Featured Adversary",
-            "Featured Adversary",
-            "Adversary Mode Selected",
-            "Winner",
-            "Loser",
-            "Game Setup",
-            "Freemode"});
+            "Featured QuickJobList",
+            "Pre Featured Job List"});
             this.SceneDebugComboBox.Location = new System.Drawing.Point(320, 219);
             this.SceneDebugComboBox.Name = "SceneDebugComboBox";
             this.SceneDebugComboBox.Size = new System.Drawing.Size(196, 21);

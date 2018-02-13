@@ -1,6 +1,9 @@
-﻿using PS4MacroAPI;
+﻿using GTA_Farm_Bot.Classes;
+using PS4MacroAPI;
+using PS4MacroAPI.Internal;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,15 +26,26 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-            
-          
-                return script.MatchTemplate(JobList, 98); 
+
+            var mainscript = script as Script;
+
+            if (mainscript.GTAform.GetDebugging() && mainscript.GTAform.GetSceneDebug() == this.Name)
+            {
+                ulong lastHash = mainscript.GTAform.GetImageHash();
+                Bitmap image = script.CropFrame(Helper.RectmapToRectangle(JobList));
+                double comparedHashes = ImageHashing.Similarity(JobList.Hash, ImageHashing.AverageHash(image));
+                mainscript.GTAform.LogThis("Compared Freemode Images with our character hash " + comparedHashes + "% similarity");
+                mainscript.updateImage(image);
+            }
+
+
+            return script.MatchTemplate(JobList, 98); 
             
         }
 
         public override void OnMatched(ScriptBase script)
         {
-            //Console.WriteLine("Jobs List Matched");
+            
             script.Press(new DualShockState() { DPad_Left = true });
             script.Sleep(1000);
             script.Press(new DualShockState() { Cross = true });

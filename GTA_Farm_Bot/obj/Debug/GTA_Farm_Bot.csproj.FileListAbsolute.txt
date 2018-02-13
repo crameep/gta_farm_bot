@@ -20,9 +20,3 @@ C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Imaging.x
 C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Math.xml
 C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Math.Core.xml
 C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\Accord.Statistics.xml
-C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\obj\Debug\GTA_Farm_Bot.OcrSampleForm.resources
-C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\asprise-ocr-api.dll
-C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\asprise-ocr-dll-bundle-32.dll
-C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\asprise-ocr-dll-bundle-64.dll
-C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\asprise-ocr-api.pdb
-C:\Users\crame\source\repos\GTA_Farm_Bot\GTA_Farm_Bot\bin\Debug\asprise-ocr-api.xml

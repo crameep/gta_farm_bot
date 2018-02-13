@@ -56,7 +56,7 @@ namespace GTA_Farm_Bot.Scenes
             Bitmap blurredImage= Helper.BlurFilter(script.CropFrame(JoiningRect));
            
             double sim = ImageHashing.Similarity(bluredHash, 123145302249472);
-            Console.WriteLine(ImageHashing.Similarity(bluredHash, 123145302249472));
+            
 
             if (sim >= 92)
             {

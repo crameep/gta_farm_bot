@@ -43,8 +43,8 @@ namespace GTA_Farm_Bot.Scenes
            {
                ulong lastHash = mainscript.GTAform.GetImageHash();
                Bitmap image = script.CropFrame(SettingsRect);
-               double comparedHashes = ImageHashing.Similarity(547608297343, ImageHashing.AverageHash(image));
-               mainscript.GTAform.LogThis("Compared FQJL Images with a " + comparedHashes + "% similarity");
+               double comparedHashes = ImageHashing.Similarity(Settings.Hash, ImageHashing.AverageHash(image));
+               mainscript.GTAform.LogThis("Compared Game Setup Image Images with a " + comparedHashes + "% similarity");
                mainscript.updateImage(image);
            }
 
