@@ -84,7 +84,7 @@ namespace GTA_Farm_Bot.Scenes
             {
 
             Helper.SceneDebugger(script, Character3, this, true, true, 0, null, 60);
-            return script.MatchTemplate(Character3, 76) && !script.MatchTemplate(TimeText, 50) && !script.MatchTemplate(PhoneMenu, 60);
+            return script.MatchTemplate(Character3, 80) && !script.MatchTemplate(TimeText, 50) && !script.MatchTemplate(PhoneMenu, 60);
             }
 
 
