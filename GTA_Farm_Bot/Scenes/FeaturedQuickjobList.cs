@@ -62,11 +62,6 @@ namespace GTA_Farm_Bot.Scenes
             script.Press(new DualShockState() { DPad_Down = true });
             script.Sleep(250);
             script.Press(new DualShockState() { DPad_Down = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { DPad_Down = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { DPad_Down = true });
-            script.Sleep(250);
 
         }
     }

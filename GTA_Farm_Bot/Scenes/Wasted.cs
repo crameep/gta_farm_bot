@@ -35,7 +35,7 @@ namespace GTA_Farm_Bot.Scenes
 
             Helper.SceneDebugger(script, WastedText, this, false, true);
 
-            if (ImageHashing.Similarity(WastedText.Hash, hash) >= 79)
+            if (ImageHashing.Similarity(WastedText.Hash, hash) >= 86)
             {
 
                 return true;
