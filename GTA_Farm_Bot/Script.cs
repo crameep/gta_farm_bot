@@ -17,20 +17,20 @@ namespace GTA_Farm_Bot
     {
         private int loopNumber;
         private int BadLoops;
-        private int lostRounds = 0;
+        private int duplicateSceneCount;
    
 
         public GTAform GTAform { get; private set; } 
         public bool Debugs { get; private set; }
- 
+
 
 
         /* Constructor */
         public Script()
         {
             Debugs = true;
-            Config.Name = "Example Script";
-            Config.LoopDelay = 2000;
+            Config.Name = "GTA Farm Bot";
+            Config.LoopDelay = 800;
             Config.ShowFormOnStart = true;
 
             Config.Scenes = new List<Scene>()
@@ -49,10 +49,11 @@ namespace GTA_Farm_Bot
                 new Loading(), //SceneDebugger Working
                 new Loser(), //SceneDebugger Working
                 new Freemode(), //SceneDebugger Working
-                new NotInGame(),
-                new Winner(),
-                new BlueError(),
-                new NotInGame(),
+                new NotInGame(), //SceneDebugger Working
+                new Winner(),  //SceneDebugger Working
+                new BlueError(), // Uses PixelMaps, no Debug for that yet. Detection part works well, restarting game not so much
+                new Wasted(), //Scene Debugger Working
+                
             };
             ScriptForm = GTAform = new GTAform();
 
@@ -64,7 +65,16 @@ namespace GTA_Farm_Bot
         public override void Start()
         {
             base.Start();
+            Press(new DualShockState() { DPad_Up = true });
             
+        }
+
+        public override void OnStopped()
+        {
+            base.OnStopped();
+            loopNumber = 0;
+            BadLoops = 0;
+            GTAform.SetCurrentScene("Stopped");
         }
 
         // Called every interval set by LoopDelay
@@ -85,7 +95,33 @@ namespace GTA_Farm_Bot
                 }
 
             });
-           
+
+
+            if (scene != null)
+            {
+                String LastScene = scene.Name;
+                BadLoops = 0;
+
+                if (LastScene == scene.Name)
+                {
+
+                    duplicateSceneCount = duplicateSceneCount++;
+
+                }
+                else
+                {
+                    duplicateSceneCount = 0;
+                }
+                if (duplicateSceneCount >= 50)
+                {
+                    Press(new DualShockState() { DPad_Up = true });
+                }
+
+            }
+
+   
+
+
             if (scene == null)
             {
                 
@@ -95,12 +131,12 @@ namespace GTA_Farm_Bot
                 {
                     if (GTAform.GetDebugging()) GTAform.LogThis("Moving to prevent AFK");
                     //SetButtons(new DualShockState() { RX = 0 });
-                    SetButtons(new DualShockState() { RY = 0 });
                     SetButtons(new DualShockState() { LY = 0 });
-                    Sleep(3000);
+                    Sleep(250);
                     //SetButtons(new DualShockState() { RX = 128 });
-                    SetButtons(new DualShockState() { RY = 128 });
+                    
                     SetButtons(new DualShockState() { LY = 128 });
+                    Sleep(250);
 
                 }
             }
@@ -117,13 +153,6 @@ namespace GTA_Farm_Bot
             }
 
 
-            if (scene != null)
-            {
-
-
-                BadLoops = 0;
-                
-            }
 
 
             }
@@ -146,6 +175,16 @@ namespace GTA_Farm_Bot
         public void IncreaseLossCount()
         {
             GTAform.IncreaseLossCount();
+        }
+
+        public void IncreaseDeathCount()
+        {
+            GTAform.IncreaseDeathCount();
+        }
+
+        public void increaseAFKCount()
+        {
+            GTAform.IncreaseAFKCount();
         }
     }
 }

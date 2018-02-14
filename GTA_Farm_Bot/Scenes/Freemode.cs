@@ -41,7 +41,7 @@ namespace GTA_Farm_Bot.Scenes
             Y = 303,
             Width = 300,
             Height = 352,
-            Hash = 6876995561665791751
+            Hash = 9223217281671519320
         };
 
         
@@ -83,9 +83,23 @@ namespace GTA_Farm_Bot.Scenes
         public override bool Match(ScriptBase script)
             {
 
-            Helper.SceneDebugger(script, Character3, this, true, true, 0, null, 60);
-            return script.MatchTemplate(Character3, 80) && !script.MatchTemplate(TimeText, 50) && !script.MatchTemplate(PhoneMenu, 60);
+           
+            Bitmap image = script.CropFrame(Helper.RectmapToRectangle(Character3));
+            image = Helper.PosterizeFilter(image);
+            image = Helper.BlurFilter(image);
+            ulong hash = ImageHashing.AverageHash(image);
+
+
+            Helper.SceneDebugger(script, Character3, this, true, true, 5000, null, 70);
+
+            if (ImageHashing.Similarity(Character3.Hash, hash) >= 73 && !script.MatchTemplate(TimeText, 50) && !script.MatchTemplate(PhoneMenu, 60))
+            {
+
+                return true;
             }
+
+            else return false;
+        }
 
 
         public override void OnMatched(ScriptBase script)

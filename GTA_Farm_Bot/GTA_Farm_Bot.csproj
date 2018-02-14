@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Scenes\BlueError.cs" />
     <Compile Include="Scenes\Freemode.cs" />
+    <Compile Include="Scenes\Wasted.cs" />
     <Compile Include="Scenes\Winner.cs" />
     <Compile Include="Scenes\Loser.cs" />
     <Compile Include="Scenes\NotInGame.cs" />

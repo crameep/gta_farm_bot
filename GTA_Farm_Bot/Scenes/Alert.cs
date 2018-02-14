@@ -31,14 +31,8 @@ namespace GTA_Farm_Bot.Scenes
 
         public override void OnMatched(ScriptBase script)
         {
-            script.Press(new DualShockState() { DPad_Right = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { DPad_Right = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { DPad_Right = true });
-            script.Sleep(250);
-            script.Press(new DualShockState() { DPad_Down = true });
-            script.Sleep(250);
+            var mainscript = script as Script;
+            mainscript.increaseAFKCount();
             script.Press(new DualShockState() { Cross = true });
             script.Sleep(30000);
 

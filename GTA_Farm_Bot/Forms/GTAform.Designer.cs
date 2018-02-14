@@ -47,6 +47,10 @@
             this.RoundsLostLabel = new System.Windows.Forms.Label();
             this.SceneDebugComboBox = new System.Windows.Forms.ComboBox();
             this.SceneDebugLabel = new System.Windows.Forms.Label();
+            this.DeathCountText = new System.Windows.Forms.Label();
+            this.DeathCountLabel = new System.Windows.Forms.Label();
+            this.AFKCountText = new System.Windows.Forms.Label();
+            this.AFKKickLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImageBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,7 +226,10 @@
             "Game Setup",
             "Loading",
             "Round Loser",
-            "Freemode"});
+            "Freemode",
+            "Wasted",
+            "Not in game",
+            "Winner"});
             this.SceneDebugComboBox.Location = new System.Drawing.Point(320, 219);
             this.SceneDebugComboBox.Name = "SceneDebugComboBox";
             this.SceneDebugComboBox.Size = new System.Drawing.Size(196, 21);
@@ -238,11 +245,53 @@
             this.SceneDebugLabel.TabIndex = 17;
             this.SceneDebugLabel.Text = "Scene Debug";
             // 
+            // DeathCountText
+            // 
+            this.DeathCountText.AutoSize = true;
+            this.DeathCountText.Location = new System.Drawing.Point(95, 80);
+            this.DeathCountText.Name = "DeathCountText";
+            this.DeathCountText.Size = new System.Drawing.Size(13, 13);
+            this.DeathCountText.TabIndex = 19;
+            this.DeathCountText.Text = "0";
+            // 
+            // DeathCountLabel
+            // 
+            this.DeathCountLabel.AllowDrop = true;
+            this.DeathCountLabel.AutoSize = true;
+            this.DeathCountLabel.Location = new System.Drawing.Point(15, 80);
+            this.DeathCountLabel.Name = "DeathCountLabel";
+            this.DeathCountLabel.Size = new System.Drawing.Size(70, 13);
+            this.DeathCountLabel.TabIndex = 18;
+            this.DeathCountLabel.Text = "Death Count:";
+            // 
+            // AFKCountText
+            // 
+            this.AFKCountText.AutoSize = true;
+            this.AFKCountText.Location = new System.Drawing.Point(95, 101);
+            this.AFKCountText.Name = "AFKCountText";
+            this.AFKCountText.Size = new System.Drawing.Size(13, 13);
+            this.AFKCountText.TabIndex = 21;
+            this.AFKCountText.Text = "0";
+            // 
+            // AFKKickLabel
+            // 
+            this.AFKKickLabel.AllowDrop = true;
+            this.AFKKickLabel.AutoSize = true;
+            this.AFKKickLabel.Location = new System.Drawing.Point(15, 101);
+            this.AFKKickLabel.Name = "AFKKickLabel";
+            this.AFKKickLabel.Size = new System.Drawing.Size(62, 13);
+            this.AFKKickLabel.TabIndex = 20;
+            this.AFKKickLabel.Text = "AFK Kicks: ";
+            // 
             // GTAform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 593);
+            this.Controls.Add(this.AFKCountText);
+            this.Controls.Add(this.AFKKickLabel);
+            this.Controls.Add(this.DeathCountText);
+            this.Controls.Add(this.DeathCountLabel);
             this.Controls.Add(this.SceneDebugLabel);
             this.Controls.Add(this.SceneDebugComboBox);
             this.Controls.Add(this.RoundsLostText);
@@ -291,5 +340,9 @@
         private System.Windows.Forms.Label RoundsLostLabel;
         private System.Windows.Forms.ComboBox SceneDebugComboBox;
         private System.Windows.Forms.Label SceneDebugLabel;
+        private System.Windows.Forms.Label DeathCountText;
+        private System.Windows.Forms.Label DeathCountLabel;
+        private System.Windows.Forms.Label AFKCountText;
+        private System.Windows.Forms.Label AFKKickLabel;
     }
 }

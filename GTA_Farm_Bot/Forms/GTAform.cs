@@ -129,5 +129,23 @@ namespace GTA_Farm_Bot.Forms
         {
 
         }
+
+        internal void IncreaseDeathCount()
+        {
+            BeginInvoke(new Action(() => {
+                int DeathCount = Convert.ToInt32(DeathCountText.Text);
+                DeathCount = DeathCount + 1;
+                DeathCountText.Text = DeathCount.ToString();
+            }));
+        }
+
+        internal void IncreaseAFKCount()
+        {
+            BeginInvoke(new Action(() => {
+                int AFKCount = Convert.ToInt32(AFKCountText.Text);
+                AFKCount = AFKCount + 1;
+                AFKCountText.Text = AFKCount.ToString();
+            }));
+        }
     }
 }

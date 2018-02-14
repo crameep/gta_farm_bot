@@ -19,14 +19,14 @@ namespace GTA_Farm_Bot.Scenes
             Y = 239,
             Width = 696,
             Height = 237,
-            Hash = 52500602273791
+            Hash = 52362354855935
         };
 
 
         public override bool Match(ScriptBase script)
         {
-            Helper.SceneDebugger(script, LoserText, this);
-            return script.MatchTemplate(LoserText, 95);
+            Helper.SceneDebugger(script, LoserText, this, false, true);
+            return script.MatchTemplate(LoserText, 90);
         }
 
         public override void OnMatched(ScriptBase script)

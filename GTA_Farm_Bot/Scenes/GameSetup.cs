@@ -35,11 +35,7 @@ namespace GTA_Farm_Bot.Scenes
 
 
         public override void OnMatched(ScriptBase script)
-            {
-                
-                script.SetButtons(new DualShockState() { LX = 0 });
-                script.Sleep(5000);
-                script.SetButtons(new DualShockState() { LY = 128 });
+            {               
                 script.Sleep(1000);
             }
         }
