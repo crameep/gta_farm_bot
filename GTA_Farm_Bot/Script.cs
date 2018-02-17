@@ -18,9 +18,9 @@ namespace GTA_Farm_Bot
         private int loopNumber;
         private int BadLoops;
         private int duplicateSceneCount;
-   
+        private int verybadloops;
 
-        public GTAform GTAform { get; private set; } 
+        public GTAform GTAform { get; private set; }
         public bool Debugs { get; private set; }
 
 
@@ -48,7 +48,7 @@ namespace GTA_Farm_Bot
                 new GameSetup(), //SceneDebugger Working
                 new Loading(), //SceneDebugger Working
                 new Loser(), //SceneDebugger Working
-                new Freemode(), //SceneDebugger Working
+                //new Freemode(), //SceneDebugger Working  screw this scene never works right.
                 new NotInGame(), //SceneDebugger Working
                 new Winner(),  //SceneDebugger Working
                 new BlueError(), // Uses PixelMaps, no Debug for that yet. Detection part works well, restarting game not so much
@@ -59,14 +59,14 @@ namespace GTA_Farm_Bot
 
         }
 
-        
+
 
         // Called when the user pressed play
         public override void Start()
         {
             base.Start();
             Press(new DualShockState() { DPad_Up = true });
-            
+
         }
 
         public override void OnStopped()
@@ -81,7 +81,7 @@ namespace GTA_Farm_Bot
         public override void Update()
         {
             Scene scene = null;
-            
+
             int loopNumber = this.loopNumber++;
             GTAform.SetLoopNumber(loopNumber);
             GTAform.SetBadLoopNumber(this.BadLoops);
@@ -119,12 +119,12 @@ namespace GTA_Farm_Bot
 
             }
 
-   
+
 
 
             if (scene == null)
             {
-                
+
                 int BadLoops = this.BadLoops++;
                 GTAform.SetCurrentScene("Can't Detect Scene");
                 if (this.BadLoops >= 20)
@@ -134,7 +134,7 @@ namespace GTA_Farm_Bot
                     SetButtons(new DualShockState() { LY = 0 });
                     Sleep(250);
                     //SetButtons(new DualShockState() { RX = 128 });
-                    
+
                     SetButtons(new DualShockState() { LY = 128 });
                     Sleep(250);
 
@@ -143,19 +143,30 @@ namespace GTA_Farm_Bot
 
             if (this.BadLoops >= 21 && GTAform.GetDebugging()) GTAform.SetBadLoopNumber(this.BadLoops);
 
-            if (this.BadLoops >= 100)
+            if (this.BadLoops >= 300)
             {
+
+                verybadloops = verybadloops++;
+                if (verybadloops >= 5)
+                {
+                    GTAform.LogThis("Shutting down the bot too many verybadloops");
+                    StopMacro();
+                }
                 BadLoops = 0;
-                if (GTAform.GetDebugging()) GTAform.LogThis("A whole lot of bad loops detected are we in a game?");
+                GTAform.LogThis("A whole lot of bad loops detected are we in a game?");
                 CaptureFrame();
                 Sleep(3000);
-                Press(new DualShockState() { DPad_Up = true });
+                if (verybadloops >= 2)
+                {
+                    GTAform.LogThis("Trying to Relaunch a game");
+                    Press(new DualShockState() { DPad_Up = true });
+                }
             }
 
 
 
 
-            }
+        }
 
         public void updateImage(Bitmap image)
         {

@@ -26,7 +26,7 @@ namespace GTA_Farm_Bot.Scenes
         public override bool Match(ScriptBase script)
         {
             Helper.SceneDebugger(script, LoserText, this, false, true);
-            return script.MatchTemplate(LoserText, 80);
+            return script.MatchTemplate(LoserText, 82);
         }
 
         public override void OnMatched(ScriptBase script)
@@ -35,6 +35,7 @@ namespace GTA_Farm_Bot.Scenes
             var mainscript = script as Script;
             mainscript.IncreaseLossCount();
             mainscript.IncreaseRoundCount();
+            script.Sleep(6000);
         }
     }
 }

@@ -11,7 +11,7 @@ using PS4MacroAPI.Internal;
 
 namespace GTA_Farm_Bot.Scenes
 {
-    class Wasted: Scene
+    class Wasted : Scene
     {
         public override string Name => "Wasted";
 
@@ -27,7 +27,7 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-       
+
             Bitmap image = script.CropFrame(Helper.RectmapToRectangle(WastedText));
             image = Helper.PosterizeFilter(image);
             ulong hash = ImageHashing.AverageHash(image);
@@ -49,11 +49,8 @@ namespace GTA_Farm_Bot.Scenes
 
             var mainscript = script as Script;
             mainscript.IncreaseDeathCount();
-            script.Sleep(2000);
-            script.Press(new DualShockState() { Cross = true });
-            script.Press(new DualShockState() { Cross = true });
-            script.Press(new DualShockState() { Cross = true });
-            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(6000);
+   
 
         }
     }

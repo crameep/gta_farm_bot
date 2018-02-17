@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GTA_Farm_Bot.Scenes
+{
+    class Freemode : Scene
     {
-        class Freemode : Scene
-        {
-            
-            public override string Name => "Freemode";
 
-            public static RectMap Character = new RectMap()
-            {
-                X = 376,
-                Y = 303,
-                Width = 169,
-                Height = 352,
-                Hash = 38604374015
-            };
+        public override string Name => "Freemode";
+
+        public static RectMap Character = new RectMap()
+        {
+            X = 376,
+            Y = 303,
+            Width = 169,
+            Height = 352,
+            Hash = 38604374015
+        };
 
         public static RectMap Character2 = new RectMap()
         {
@@ -44,7 +44,7 @@ namespace GTA_Farm_Bot.Scenes
             Hash = 9223217281671519320
         };
 
-        
+
         public static RectMap TimeText = new RectMap()
         {
             X = 876,
@@ -60,7 +60,7 @@ namespace GTA_Farm_Bot.Scenes
             Y = 621,
             Width = 27,
             Height = 12,
-            
+
         };
 
         public static RectMap PhoneMenu = new RectMap()
@@ -81,9 +81,9 @@ namespace GTA_Farm_Bot.Scenes
         };
 
         public override bool Match(ScriptBase script)
-            {
+        {
 
-           
+
             Bitmap image = script.CropFrame(Helper.RectmapToRectangle(Character3));
             image = Helper.PosterizeFilter(image);
             image = Helper.BlurFilter(image);
@@ -103,13 +103,13 @@ namespace GTA_Farm_Bot.Scenes
 
 
         public override void OnMatched(ScriptBase script)
-            {
-                
-                script.Press(new DualShockState() { DPad_Up = true });
+        {
+
+            script.Press(new DualShockState() { DPad_Up = true });
             script.Sleep(5000);
-                
-            }
+
         }
     }
+}
 
 

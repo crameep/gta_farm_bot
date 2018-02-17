@@ -34,7 +34,7 @@ namespace GTA_Farm_Bot.Scenes
             var mainscript = script as Script;
             mainscript.IncreaseWinCount();
             mainscript.IncreaseRoundCount();
-
+            script.Sleep(6000);
         }
     }
 }

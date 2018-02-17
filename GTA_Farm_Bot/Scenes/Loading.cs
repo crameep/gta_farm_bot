@@ -28,9 +28,9 @@ namespace GTA_Farm_Bot.Scenes
             Helper.SceneDebugger(script, JoiningText, this, true);
             Bitmap image = Helper.BlurFilter(script.CropFrame(Helper.RectmapToRectangle(JoiningText)));
             ulong hash = ImageHashing.AverageHash(image);
-                 
+
             double sim = ImageHashing.Similarity(hash, JoiningText.Hash);
-            
+
 
             if (sim >= 92)
             {
@@ -41,8 +41,8 @@ namespace GTA_Farm_Bot.Scenes
 
         public override void OnMatched(ScriptBase script)
         {
-            
-            script.Sleep(1000);
+
+            script.Sleep(60000);
 
 
         }
