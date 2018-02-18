@@ -35,24 +35,24 @@ namespace GTA_Farm_Bot
 
             Config.Scenes = new List<Scene>()
             {
-                new PhoneMenu(), //SceneDebugger Working
-                new FeaturedQuickJobList(),//SceneDebugger Working
-                new PreFeaturedQuickJobList(), //SceneDebugger Working
-                new SelectAdversaryMode(), // SceneDebugger Working
-                new Spectating(), // SceneDebugger Working
-                new TheJump(), //SceneDebugger Working
-                new Parachute(), //SceneDebugger Working
-                new VoteNextJob(), //SceneDebugger Working
-                new Alert(), //SceneDebugger Working
-                new Offline(), //SceneDebugger Working
-                new GameSetup(), //SceneDebugger Working
-                new Loading(), //SceneDebugger Working
-                new Loser(), //SceneDebugger Working
-                //new Freemode(), //SceneDebugger Working  screw this scene never works right.
-                new NotInGame(), //SceneDebugger Working
-                new Winner(),  //SceneDebugger Working
-                new BlueError(), // Uses PixelMaps, no Debug for that yet. Detection part works well, restarting game not so much
-                new Wasted(), //Scene Debugger Working
+                new PhoneMenu(), // Picked up phone menu lets find our job
+                new FeaturedQuickJobList(),// 1 of 2 different job lists I get on the phone menu
+                new PreFeaturedQuickJobList(), // 2nd job list the usual one.
+                new SelectAdversaryMode(), // Pick the right game mode once we have figured out wich list we have.
+                new Spectating(), // Yeah, you know what this is.
+                new TheJump(), // For Moto Wars Mode
+                new Parachute(), // Sometimes sees that we need to open parachute
+                new VoteNextJob(), // Self explanatory
+                new Alert(), // Have we been kicked for AFK? 
+                new Offline(), // Join an online lobby
+                new GameSetup(), // Pre Game 
+                new Loading(), // Wait to look for something to do.
+                new Loser(), // We lost a round
+                //new Freemode(), // Screw this scene never works right.
+                new NotInGame(), // Meh, haven't seen this work more than once, but it did work leave for now.
+                new Winner(),  // We won a round
+                new BlueError(), // Uses PixelMaps, no Debug for that yet. Detection part works well, restarting game not so much Did we crash?
+                new Wasted(), // We died
                 
             };
             ScriptForm = GTAform = new GTAform();
