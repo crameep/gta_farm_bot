@@ -83,91 +83,39 @@ namespace GTA_Farm_Bot.Scenes
 
             // Exit blue error
             script.Press(new DualShockState() { Circle = true });
-            script.Sleep(SettingsData.SleepTimeL);
+            script.Sleep(SleepTime.L);
             // Restart game
             script.Press(new DualShockState() { Cross = true });
             // Long sleep (2 minutes)
             script.Sleep(120000);
             // Pause game
             script.Press(new DualShockState() { Options = true });
-            script.Sleep(SettingsData.SleepTimeXL);
+            script.Sleep(SleepTime.XL);
 
             // Select online tab
             for (var i = 0; i < 5; i++)
             {
                 script.Press(new DualShockState() { R1 = true });
-                script.Sleep(SettingsData.SleepTimeM);
+                script.Sleep(SleepTime.M);
             }
 
             // Select solo session
             script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeXL);
+            script.Sleep(SleepTime.XL);
             script.Press(new DualShockState() { DPad_Up = true });
-            script.Sleep(SettingsData.SleepTimeL);
+            script.Sleep(SleepTime.L);
             script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeL);
+            script.Sleep(SleepTime.L);
             script.Press(new DualShockState() { DPad_Up = true });
-            script.Sleep(SettingsData.SleepTimeL);
+            script.Sleep(SleepTime.L);
             script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeL);
+            script.Sleep(SleepTime.L);
 
             // Quit singleplayer
             script.Press(new DualShockState() { Cross = true });
 
             // Long sleep (1.5 minutes)
             script.Sleep(90000);
-
-            // Pause game
-            script.Press(new DualShockState() { Options = true });
-            script.Sleep(SettingsData.SleepTimeXL);
-
-            // Select online tab
-            script.Press(new DualShockState() { R1 = true });
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeL);
-
-            // Select job
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeXL);
-
-            // Select play job
-            script.Press(new DualShockState() { DPad_Down = true });
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeXL);
-
-            // Select rockstar created
-            script.Press(new DualShockState() { DPad_Up = true });
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { DPad_Up = true });
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeXL);
-
-            // Select parachute
-            script.Press(new DualShockState() { DPad_Up = true });
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { DPad_Up = true });
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeXL);
-
-            // Select Up in the Clouds
-            for (var i = 0; i < 4; i++)
-            {
-                script.Press(new DualShockState() { DPad_Up = true });
-                script.Sleep(SettingsData.SleepTimeL);
-            }
-            script.Sleep(SettingsData.SleepTimeL);
-            script.Press(new DualShockState() { Cross = true });
-            script.Sleep(SettingsData.SleepTimeL);
-
-            // Confirm job
-            script.Press(new DualShockState() { Cross = true });
-            // Sleep 14 seconds
-            script.Sleep(14000);
-
             Console.WriteLine("BlueError END");
         }
     }

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace GTA_Farm_Bot
 {
     public class Script : ScriptBase
@@ -23,12 +24,11 @@ namespace GTA_Farm_Bot
         public GTAform GTAform { get; private set; }
         public bool Debugs { get; private set; }
 
-
+        
 
         /* Constructor */
         public Script()
         {
-            Debugs = true;
             Config.Name = "GTA Farm Bot";
             Config.LoopDelay = 800;
             Config.ShowFormOnStart = true;

@@ -49,7 +49,7 @@ namespace GTA_Farm_Bot.Scenes
 
             var mainscript = script as Script;
             mainscript.IncreaseDeathCount();
-            script.Sleep(6000);
+            script.Sleep(10000);
    
 
         }

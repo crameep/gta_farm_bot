@@ -6,26 +6,19 @@ using System.Threading.Tasks;
 
 namespace GTA_Farm_Bot.Classes
 {
-    class SettingsData
-    {
 
-        public static int SleepTime { get; set; }
-        public static int SleepTimeM { get; set; }
-        public static int SleepTimeL { get; set; }
-        public static int SleepTimeXL { get; set; }
-        
-
-        public SettingsData()
+        class SleepTime
         {
-            Init();
-        }
+            public const int XS = 100;
+            public const int S = 300;
+            public const int M = 500;
+            public const int L = 1000;
+            public const int XL = 2000;
+            public const int XXL = 3000;
 
-        public void Init()
-        {
-            SleepTime = 250;
-            SleepTimeM = 1000;
-            SleepTimeL = 5000;
-            SleepTimeXL = 10000;
-        }
     }
+
 }
+
+
+

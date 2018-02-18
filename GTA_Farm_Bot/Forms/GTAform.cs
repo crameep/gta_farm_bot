@@ -51,8 +51,8 @@ namespace GTA_Farm_Bot.Forms
             
             BeginInvoke(new Action(() => {
 
-
-                str =  SceneDebugComboBox.SelectedItem.ToString();
+                if (SceneDebugComboBox.SelectedItem != null) { str = SceneDebugComboBox.SelectedItem.ToString(); }
+                
             }));
 
             return str;
