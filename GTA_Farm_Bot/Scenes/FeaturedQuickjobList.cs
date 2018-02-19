@@ -31,6 +31,11 @@ namespace GTA_Farm_Bot.Scenes
             image = Helper.BlurFilter(image);
             ulong hash = ImageHashing.AverageHash(image);
 
+            SceneDebugger debugger = new SceneDebugger(script, QuickJobList, this)
+            {
+                Blur = false
+            };
+           
 
             Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90, true);
 

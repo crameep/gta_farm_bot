@@ -48,7 +48,7 @@
       <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net46\Accord.Statistics.dll</HintPath>
     </Reference>
     <Reference Include="PS4MacroAPI">
-      <HintPath>..\..\..\..\Documents\PS4Macro_0_5_2\PS4MacroAPI.dll</HintPath>
+      <HintPath>C:\Users\crame\Documents\PS4Macro_0_5_2\PS4MacroAPI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

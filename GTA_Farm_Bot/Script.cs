@@ -66,6 +66,7 @@ namespace GTA_Farm_Bot
         {
             base.Start();
             Press(new DualShockState() { DPad_Up = true });
+            
 
         }
 
