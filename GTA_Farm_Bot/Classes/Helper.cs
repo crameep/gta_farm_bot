@@ -20,6 +20,12 @@ namespace GTA_Farm_Bot.Classes
             return filter.Apply(bmp);
         }
 
+        public static Bitmap GrayWorldFilter(Bitmap bmp)
+        {
+            GrayWorld filter = new GrayWorld();
+            return filter.Apply(bmp);
+        }
+
         public static Bitmap PosterizeFilter(Bitmap bmp, byte posterizationInterval = 150)
         {
             SimplePosterization filter = new SimplePosterization();
@@ -39,7 +45,16 @@ namespace GTA_Farm_Bot.Classes
             return r;
         }
 
-        public static void SceneDebugger(ScriptBase script, RectMap rectMap, Scene scene, bool blurred = false, bool posterized = false, int interval = 0, String s = null, byte posterInterval = 150)
+        public static void SceneDebugger(
+            ScriptBase script, 
+            RectMap rectMap, 
+            Scene scene, 
+            bool blurred = false,
+            bool posterized = false,
+            int interval = 0,
+            String s = null,
+            byte posterInterval = 150,
+            bool grayworld = false)
         {
 
             var mainscript = script as Script;
@@ -51,7 +66,8 @@ namespace GTA_Farm_Bot.Classes
                 Bitmap image = script.CropFrame(Helper.RectmapToRectangle(rectMap));
                 ulong hash = ImageHashing.AverageHash(image);
                 if (posterized) image = Helper.PosterizeFilter(image, posterInterval);
-                if (blurred) image = Helper.BlurFilter(image);                
+                if (blurred) image = Helper.BlurFilter(image);
+                if (grayworld) image = Helper.GrayWorldFilter(image);
                 double comparedHashes = ImageHashing.Similarity(rectMap.Hash, hash);
                 image.Save(scene.Name.Replace(" ","") + "_" + hash + "_" + comparedHashes + ".png");
                 if (s == null) s = scene.Name;

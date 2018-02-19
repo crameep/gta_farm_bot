@@ -32,7 +32,7 @@ namespace GTA_Farm_Bot.Scenes
             ulong hash = ImageHashing.AverageHash(image);
 
 
-            Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90);
+            Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90, true);
 
             if (hash == QuickJobList.Hash)
             {

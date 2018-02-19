@@ -23,6 +23,7 @@ namespace GTA_Farm_Bot.Scenes
             Height = 148, 
             Hash = 140183445929855
 
+
         };
 
         public static RectMap FeaturedQuickJobList = new RectMap()
@@ -47,7 +48,7 @@ namespace GTA_Farm_Bot.Scenes
             Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90);
 
             if (ImageHashing.Similarity(QuickJobList.Hash, hash) >= 99 || (ImageHashing.Similarity(FeaturedQuickJobList.Hash, hash) >= 99))
-            {
+            { 
                
                 return true;
             }
