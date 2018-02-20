@@ -21,7 +21,8 @@ namespace GTA_Farm_Bot.Scenes
             {
                 Name = "QuickJobList",
                 RectMap = new RectMap() { X = 844, Y = 461, Width = 122, Height = 148, Hash = 140183445929855 },
-                Match = 99
+                Match = 99,
+                Operator = "OR"
             },
 
               new RectMapObj()
@@ -35,8 +36,9 @@ namespace GTA_Farm_Bot.Scenes
         };
         public override bool Match(ScriptBase script)
         {
+            bool lastMatched = false;
+            bool lastOperation = false;
 
-         
             foreach (RectMapObj map in mapList)
             {
 
@@ -50,7 +52,16 @@ namespace GTA_Farm_Bot.Scenes
                 ulong hash = ImageHashing.AverageHash(image);       
                 
 
-                if (ImageHashing.Similarity(map.RectMap.Hash, hash) >= map.Match ) { map.Matched = true; }
+                if (ImageHashing.Similarity(map.RectMap.Hash, hash) >= map.Match )
+                {
+                    map.Matched = true;
+                    lastMatched = true;
+                }
+
+                if (map.Operator == "OR")
+                {
+                    if (map.Matched || lastMatched && lastOperation == true) { lastOperation = true; }
+                }
 
 
                 //So i need to figure out how to deal with different operators, I made a place in the new RectMapObj to store the operator I want to use maybe
