@@ -75,7 +75,7 @@ namespace GTA_Farm_Bot.Scenes
                 ulong hash = ImageHashing.AverageHash(image);       
                 
 
-                if (ImageHashing.Similarity(hash1: map.RectMap.Hash, hash2: hash) >= map.Match ) { map.Matched = true; }
+                if (ImageHashing.Similarity(map.RectMap.Hash, hash) >= map.Match ) { map.Matched = true; }
 
 
                 //So i need to figure out how to deal with different operators, I made a place in the new RectMapObj to store the operator I want to use maybe
