@@ -1,6 +1,7 @@
 ﻿using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,16 @@ namespace GTA_Farm_Bot.Classes
             GrayWorld = false;
             Interval = 0;
             String = scene.Name;
+        }
+
+        public Bitmap Run()
+        {
+            var mainscript = Script as Script;
+
+            mainscript.GTAform.LogThis("Ran the Run Mehod on Scene Debugger");
+            Bitmap image = mainscript.CropFrame(Helper.RectmapToRectangle(RectMap));
+            mainscript.updateImage(image);
+            return image;
         }
 
     }

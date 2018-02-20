@@ -15,12 +15,34 @@ namespace GTA_Farm_Bot.Scenes
     {
         public override string Name => "Selected Adversary Mode";
 
+        List<RectMapObj> mapList = new List<RectMapObj>()
+        {
+            new RectMapObj()
+            {
+                Name = "QuickJobList",
+                RectMap = new RectMap() { X = 844, Y = 461, Width = 122, Height = 148, Hash = 140183445929855 },
+                Match = 99
+            },
+
+              new RectMapObj()
+            {
+                Name = "FeaturedQuickJobListt",
+                RectMap = new RectMap() { X = 844, Y = 461, Width = 122, Height = 148, Hash = 140185576636160 },
+                Match = 99
+            },
+
+
+        };
+
+
+
+
         public static RectMap QuickJobList = new RectMap()
         {
             X = 844,
             Y = 461,
             Width = 122,
-            Height = 148, 
+            Height = 148,
             Hash = 140183445929855
 
 
@@ -35,25 +57,35 @@ namespace GTA_Farm_Bot.Scenes
             Hash = 140185576636160
         };
 
-   
+
         public override bool Match(ScriptBase script)
         {
-            
-            Bitmap image = script.CropFrame(Helper.RectmapToRectangle(QuickJobList));
-            image = Helper.PosterizeFilter(image, 90);
-            image = Helper.BlurFilter(image);
-            ulong hash = ImageHashing.AverageHash(image);          
-            
 
-            Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90);
+         
+            foreach (RectMapObj map in mapList)
+            {
 
-            if (ImageHashing.Similarity(QuickJobList.Hash, hash) >= 99 || (ImageHashing.Similarity(FeaturedQuickJobList.Hash, hash) >= 99))
-            { 
-               
-                return true;
+
+                // Going to replace this line with the new SceneDebugger class soon as a finish it
+                Helper.SceneDebugger(script, map.RectMap, this, true, true, 5000, map.Name, 90);
+
+                Bitmap image = script.CropFrame(Helper.RectmapToRectangle(map.RectMap));
+                image = Helper.PosterizeFilter(image, 90);
+                image = Helper.BlurFilter(image);
+                ulong hash = ImageHashing.AverageHash(image);       
+                
+
+                if (ImageHashing.Similarity(hash1: map.RectMap.Hash, hash2: hash) >= map.Match ) { map.Matched = true; }
+
+
+                //So i need to figure out how to deal with different operators, I made a place in the new RectMapObj to store the operator I want to use maybe
+
+
+                //figure out operators and weather or not all the matches are as intended and return true or false.
+
             }
 
-            else return false;
+
 
         }
 

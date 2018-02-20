@@ -14,7 +14,15 @@ namespace GTA_Farm_Bot.Scenes
     {
         public override string Name => "Featured QuickJobList";
 
-
+        List<RectMapObj> mapList = new List<RectMapObj>()
+        {
+            new RectMapObj()
+            {
+                Name = "FeaturedQuickJoblist",
+                RectMap = new RectMap() { X = 844, Y = 461, Width = 122, Height = 148, Hash = 547599908735 },
+                Match = 95                
+            }
+        };
         public static RectMap QuickJobList = new RectMap()
         {
             X = 844,
@@ -35,7 +43,8 @@ namespace GTA_Farm_Bot.Scenes
             {
                 Blur = false
             };
-           
+
+            debugger.Run();
 
             Helper.SceneDebugger(script, QuickJobList, this, true, true, 5000, null, 90, true);
 

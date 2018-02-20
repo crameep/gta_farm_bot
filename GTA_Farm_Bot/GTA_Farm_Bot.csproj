@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Classes\RectMapObj.cs" />
     <Compile Include="Classes\SceneDebugger.cs" />
     <Compile Include="Classes\SettingsData.cs" />
     <Compile Include="Forms\GTAform.cs">
