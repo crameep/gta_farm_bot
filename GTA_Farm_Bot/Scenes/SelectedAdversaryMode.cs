@@ -33,31 +33,6 @@ namespace GTA_Farm_Bot.Scenes
 
 
         };
-
-
-
-
-        public static RectMap QuickJobList = new RectMap()
-        {
-            X = 844,
-            Y = 461,
-            Width = 122,
-            Height = 148,
-            Hash = 140183445929855
-
-
-        };
-
-        public static RectMap FeaturedQuickJobList = new RectMap()
-        {
-            X = 844,
-            Y = 461,
-            Width = 122,
-            Height = 148,
-            Hash = 140185576636160
-        };
-
-
         public override bool Match(ScriptBase script)
         {
 
