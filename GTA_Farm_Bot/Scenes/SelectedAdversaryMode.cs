@@ -68,9 +68,10 @@ namespace GTA_Farm_Bot.Scenes
 
 
                 //figure out operators and weather or not all the matches are as intended and return true or false.
+                return false;
 
             }
-
+            return false;
 
 
         }

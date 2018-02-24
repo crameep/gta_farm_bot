@@ -51,6 +51,7 @@
             this.DeathCountLabel = new System.Windows.Forms.Label();
             this.AFKCountText = new System.Windows.Forms.Label();
             this.AFKKickLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImageBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,11 +284,22 @@
             this.AFKKickLabel.TabIndex = 20;
             this.AFKKickLabel.Text = "AFK Kicks: ";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(439, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Setup";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // GTAform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 593);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.AFKCountText);
             this.Controls.Add(this.AFKKickLabel);
             this.Controls.Add(this.DeathCountText);
@@ -344,5 +356,6 @@
         private System.Windows.Forms.Label DeathCountLabel;
         private System.Windows.Forms.Label AFKCountText;
         private System.Windows.Forms.Label AFKKickLabel;
+        private System.Windows.Forms.Button button1;
     }
 }

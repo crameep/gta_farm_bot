@@ -147,5 +147,10 @@ namespace GTA_Farm_Bot.Forms
                 AFKCountText.Text = AFKCount.ToString();
             }));
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new SetupForm().Show(this);
+        }
     }
 }
