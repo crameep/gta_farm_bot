@@ -65,6 +65,7 @@
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\RectMapObj.cs" />
     <Compile Include="Classes\SceneDebugger.cs" />
+    <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\SettingsData.cs" />
     <Compile Include="Forms\GTAform.cs">
       <SubType>Form</SubType>
@@ -88,6 +89,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Scenes\BlueError.cs" />
     <Compile Include="Scenes\Freemode.cs" />
@@ -128,7 +134,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />

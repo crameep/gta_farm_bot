@@ -4,7 +4,9 @@ using PS4MacroAPI.Internal;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static Accord.Imaging.Filters.SimplePosterization;
@@ -77,6 +79,11 @@ namespace GTA_Farm_Bot.Classes
                 mainscript.Sleep(interval);
             }
 
+        }
+
+        public static string GetScriptFolder()
+        {
+            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         }
     }
 }

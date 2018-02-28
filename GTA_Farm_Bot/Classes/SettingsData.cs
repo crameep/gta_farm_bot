@@ -18,6 +18,11 @@ namespace GTA_Farm_Bot.Classes
 
     }
 
+    class HashData
+    {
+
+    }
+
 }
 
 

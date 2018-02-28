@@ -1,7 +1,9 @@
 ﻿using GTA_Farm_Bot.Classes;
 using PS4MacroAPI;
+using PS4MacroAPI.Internal;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,15 +44,74 @@ namespace GTA_Farm_Bot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-            Helper.SceneDebugger(script, AlertText, this, true, true);
-            return script.MatchTemplate(AlertText, 80) && !script.MatchTemplate(TimeText, 95) && !script.MatchTemplate(JoiningText, 70);
+            Helper.SceneDebugger(script, TimeText, this, true);
+            Helper.SceneDebugger(script, JoiningText, this, true);
+            Bitmap image = Helper.BlurFilter(script.CropFrame(Helper.RectmapToRectangle(JoiningText)));
+            ulong hash = ImageHashing.AverageHash(image);
+
+            double sim = ImageHashing.Similarity(hash, JoiningText.Hash);
+
+            if ( !script.MatchTemplate(TimeText,90) && !script.MatchTemplate(AlertText,90))
+            {
+                if (sim >= 92)
+                {
+                    return false;
+                }
+                else return true;
+            }
+
+            else return true;
         }
+       
 
         public override void OnMatched(ScriptBase script)
         {
-            script.Press(new DualShockState() { DPad_Up = true});
+            script.Press(new DualShockState() { Options = true});
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Right = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { DPad_Down = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(250);
 
-
+            for (int i = 1; i <= 98; i++)
+            {
+                script.Press(new DualShockState() { DPad_Down = true });
+                script.Sleep(50);
+            }
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(250);
+            script.Press(new DualShockState() { Cross = true });
+            script.Sleep(30000);
         }
     }
 }

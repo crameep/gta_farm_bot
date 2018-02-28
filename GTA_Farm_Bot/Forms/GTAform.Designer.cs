@@ -325,6 +325,7 @@
             this.Controls.Add(this.DebuggingCheckBox);
             this.Name = "GTAform";
             this.Text = "GTA Farm Bot";
+            this.Load += new System.EventHandler(this.GTAform_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImageBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

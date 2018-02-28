@@ -1,15 +1,18 @@
-﻿using PS4MacroAPI;
+﻿using GTA_Farm_Bot.Properties;
+using PS4MacroAPI;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GTA_Farm_Bot.Classes
 {
-    class RectMapObj
-    {
-    
+    public class RectMapObj
+
+    { 
+
         public RectMap RectMap { get; set; }
 
         public String Name { get; set; }
@@ -20,7 +23,7 @@ namespace GTA_Farm_Bot.Classes
 
         public bool Matched { get; set; }
 
-
+       
         public RectMapObj()
         {
 
@@ -32,5 +35,7 @@ namespace GTA_Farm_Bot.Classes
 
             
         }
+
+    
     }
 }

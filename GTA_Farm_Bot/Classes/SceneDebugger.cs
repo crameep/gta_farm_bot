@@ -58,8 +58,8 @@ namespace GTA_Farm_Bot.Classes
         public Bitmap Run()
         {
             var mainscript = Script as Script;
-
-            mainscript.GTAform.LogThis("Ran the Run Mehod on Scene Debugger");
+        
+            // mainscript.GTAform.LogThis("Ran the Run Mehod on Scene Debugger");
             Bitmap image = mainscript.CropFrame(Helper.RectmapToRectangle(RectMap));
             mainscript.updateImage(image);
             return image;

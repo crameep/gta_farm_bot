@@ -20,10 +20,24 @@ namespace GTA_Farm_Bot.Forms
         public GTAform()
         {
             InitializeComponent();
+           
         }
 
         private void GTAform_Load(object sender, EventArgs e)
         {
+           
+            Console.WriteLine("Is this fireing");
+
+            try
+            {
+                Console.WriteLine("Attempting to load Settings");
+                LoadSettings();
+            }
+            catch
+            {
+                Settings.Instance.InitData();
+                SaveSettings();
+            }
 
         }
 
@@ -151,6 +165,17 @@ namespace GTA_Farm_Bot.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             new SetupForm().Show(this);
+        }
+
+        private void SaveSettings()
+        {
+            Settings.Instance.Save(Helper.GetScriptFolder() + @"\profile.xml");
+        }
+
+        private void LoadSettings()
+        {
+            Settings.Instance.Load(Helper.GetScriptFolder() + @"\profile.xml");
+            LogThis("Loading Settings...");
         }
     }
 }

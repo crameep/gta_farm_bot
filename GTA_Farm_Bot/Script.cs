@@ -65,7 +65,7 @@ namespace GTA_Farm_Bot
         public override void Start()
         {
             base.Start();
-            Press(new DualShockState() { DPad_Up = true });
+            //Press(new DualShockState() { DPad_Up = true });
             GTAform.LogThis("Pressed Start");
             
 
