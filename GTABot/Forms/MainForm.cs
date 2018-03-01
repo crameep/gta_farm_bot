@@ -36,8 +36,9 @@ namespace GTABot.Forms
         private void SceneSetupMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            MessageBox.Show("You clicked on the menu item called " + item.Name + " shown as " + item.Text);
+            
             Log(item.Name);
+            new SceneSetupForm(item.Name).Show();
         }
 
 

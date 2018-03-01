@@ -56,6 +56,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Script.cs" />
+    <Compile Include="Forms\SceneSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SceneSetupForm.Designer.cs">
+      <DependentUpon>SceneSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\Game.cs" />
     <Compile Include="Scenes\Freemode.cs" />
@@ -66,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SceneSetupForm.resx">
+      <DependentUpon>SceneSetupForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
