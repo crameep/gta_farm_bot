@@ -11,7 +11,7 @@ namespace GTABot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-            return SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneMapDictionary["Alert"], script);
+            return SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneConditions["Alert"], script);
         }
 
         public override void OnMatched(ScriptBase script)

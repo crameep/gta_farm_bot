@@ -10,7 +10,7 @@ namespace GTABot.Scenes
 
         public override bool Match(ScriptBase script)
         {
-            return SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneMapDictionary["AFK"], script);
+            return SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneConditions["AFK"], script);
 
         }
 

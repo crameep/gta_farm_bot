@@ -20,7 +20,7 @@ namespace GTABot.Forms
             InitializeComponent();
            
             SceneTitleLabel.Text = s;
-            SceneDataGrid.DataSource = Settings.Instance.Data.SceneMapDictionary[s];
+            SceneDataGrid.DataSource = Settings.Instance.Data.SceneConditions[s];
             RectMapDataGrid.Columns.Add("rectmapX", "X");
             RectMapDataGrid.Columns.Add("rectmapY", "X");
             RectMapDataGrid.Columns.Add("rectmapWidth", "Width");
