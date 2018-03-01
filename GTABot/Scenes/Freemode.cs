@@ -15,8 +15,8 @@ namespace GTABot.Scenes
         {
             
             
-            return SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneConditions["freemode"], script) ||
-                   SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneConditions["freemode_bed"], script);
+            return SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneConditions["Freemode"], script) ||
+                   SceneConditionHandler.HandleConditions(Settings.Instance.Data.SceneConditions["Freemode_Bed"], script);
         }
 
 
