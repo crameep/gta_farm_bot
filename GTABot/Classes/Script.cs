@@ -56,6 +56,7 @@ namespace GTABot
             base.OnStopped();
             Lap = 0;
            MainForm.SetStatus("Stopped", Color.Red);
+           
         }
 
         public override void OnPaused()
