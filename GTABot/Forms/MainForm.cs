@@ -20,7 +20,25 @@ namespace GTABot.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            try
+            {
+                LoadSettings();
+                Log("Loading Settings...");
+            }
+            catch
+            {
+                Settings.Instance.InitData();
+                Log("Defaults Loaded");
+                SaveSettings();
+            }
 
+            BindSceneSetupMenu();
+        }
+
+
+
+        public void BindSceneSetupMenu()
+        {
             foreach (var name in Settings.Instance.Data.SceneConditions.GetPropertyNames())
             {
                 // var value = Settings.Instance.Data.SceneConditions[name];
@@ -31,8 +49,21 @@ namespace GTABot.Forms
                 item.Name = name;
                 this.SceneSetupMenu.DropDownItems.Add(item);
             }
+        }
+
+        private void LoadSettings()
+        {
+            Settings.Instance.Load(Helper.GetScriptFolder() + @"\profile.xml");
+
 
         }
+
+
+        private void SaveSettings()
+        {
+            Settings.Instance.Save(Helper.GetScriptFolder() + @"\profile.xml");
+        }
+
 
         private void SceneSetupMenuItem_Click(object sender, EventArgs e)
         {
