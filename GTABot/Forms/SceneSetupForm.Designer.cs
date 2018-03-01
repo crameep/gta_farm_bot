@@ -30,9 +30,19 @@
         {
             this.SceneDataGrid = new System.Windows.Forms.DataGridView();
             this.SceneTitleLabel = new System.Windows.Forms.Label();
-            this.RectMapDataGrid = new System.Windows.Forms.DataGridView();
+            this.RectMapXLabel = new System.Windows.Forms.Label();
+            this.RectMapXBox = new System.Windows.Forms.TextBox();
+            this.RectMapYBox = new System.Windows.Forms.TextBox();
+            this.RectMapYLabel = new System.Windows.Forms.Label();
+            this.RectMapWidthBox = new System.Windows.Forms.TextBox();
+            this.RectMapWidthLabel = new System.Windows.Forms.Label();
+            this.RectMapHeightBox = new System.Windows.Forms.TextBox();
+            this.RectMapHeightLabel = new System.Windows.Forms.Label();
+            this.RectMapHashBox = new System.Windows.Forms.TextBox();
+            this.RectMapHashLabel = new System.Windows.Forms.Label();
+            this.RectMapLabel = new System.Windows.Forms.Label();
+            this.CaptureButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SceneDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RectMapDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // SceneDataGrid
@@ -55,28 +65,128 @@
             this.SceneTitleLabel.TabIndex = 1;
             this.SceneTitleLabel.Text = "label1";
             // 
-            // RectMapDataGrid
+            // RectMapXLabel
             // 
-            this.RectMapDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RectMapDataGrid.Location = new System.Drawing.Point(12, 228);
-            this.RectMapDataGrid.MultiSelect = false;
-            this.RectMapDataGrid.Name = "RectMapDataGrid";
-            this.RectMapDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.RectMapDataGrid.Size = new System.Drawing.Size(525, 150);
-            this.RectMapDataGrid.TabIndex = 2;
+            this.RectMapXLabel.AutoSize = true;
+            this.RectMapXLabel.Location = new System.Drawing.Point(10, 251);
+            this.RectMapXLabel.Name = "RectMapXLabel";
+            this.RectMapXLabel.Size = new System.Drawing.Size(14, 13);
+            this.RectMapXLabel.TabIndex = 2;
+            this.RectMapXLabel.Text = "X";
+            // 
+            // RectMapXBox
+            // 
+            this.RectMapXBox.Location = new System.Drawing.Point(55, 248);
+            this.RectMapXBox.Name = "RectMapXBox";
+            this.RectMapXBox.Size = new System.Drawing.Size(100, 20);
+            this.RectMapXBox.TabIndex = 3;
+            // 
+            // RectMapYBox
+            // 
+            this.RectMapYBox.Location = new System.Drawing.Point(55, 277);
+            this.RectMapYBox.Name = "RectMapYBox";
+            this.RectMapYBox.Size = new System.Drawing.Size(100, 20);
+            this.RectMapYBox.TabIndex = 5;
+            // 
+            // RectMapYLabel
+            // 
+            this.RectMapYLabel.AutoSize = true;
+            this.RectMapYLabel.Location = new System.Drawing.Point(10, 280);
+            this.RectMapYLabel.Name = "RectMapYLabel";
+            this.RectMapYLabel.Size = new System.Drawing.Size(14, 13);
+            this.RectMapYLabel.TabIndex = 4;
+            this.RectMapYLabel.Text = "Y";
+            // 
+            // RectMapWidthBox
+            // 
+            this.RectMapWidthBox.Location = new System.Drawing.Point(55, 307);
+            this.RectMapWidthBox.Name = "RectMapWidthBox";
+            this.RectMapWidthBox.Size = new System.Drawing.Size(100, 20);
+            this.RectMapWidthBox.TabIndex = 7;
+            // 
+            // RectMapWidthLabel
+            // 
+            this.RectMapWidthLabel.AutoSize = true;
+            this.RectMapWidthLabel.Location = new System.Drawing.Point(10, 310);
+            this.RectMapWidthLabel.Name = "RectMapWidthLabel";
+            this.RectMapWidthLabel.Size = new System.Drawing.Size(35, 13);
+            this.RectMapWidthLabel.TabIndex = 6;
+            this.RectMapWidthLabel.Text = "Width";
+            // 
+            // RectMapHeightBox
+            // 
+            this.RectMapHeightBox.Location = new System.Drawing.Point(55, 337);
+            this.RectMapHeightBox.Name = "RectMapHeightBox";
+            this.RectMapHeightBox.Size = new System.Drawing.Size(100, 20);
+            this.RectMapHeightBox.TabIndex = 9;
+            // 
+            // RectMapHeightLabel
+            // 
+            this.RectMapHeightLabel.AutoSize = true;
+            this.RectMapHeightLabel.Location = new System.Drawing.Point(10, 340);
+            this.RectMapHeightLabel.Name = "RectMapHeightLabel";
+            this.RectMapHeightLabel.Size = new System.Drawing.Size(38, 13);
+            this.RectMapHeightLabel.TabIndex = 8;
+            this.RectMapHeightLabel.Text = "Height";
+            // 
+            // RectMapHashBox
+            // 
+            this.RectMapHashBox.Location = new System.Drawing.Point(55, 366);
+            this.RectMapHashBox.Name = "RectMapHashBox";
+            this.RectMapHashBox.Size = new System.Drawing.Size(100, 20);
+            this.RectMapHashBox.TabIndex = 11;
+            // 
+            // RectMapHashLabel
+            // 
+            this.RectMapHashLabel.AutoSize = true;
+            this.RectMapHashLabel.Location = new System.Drawing.Point(10, 369);
+            this.RectMapHashLabel.Name = "RectMapHashLabel";
+            this.RectMapHashLabel.Size = new System.Drawing.Size(32, 13);
+            this.RectMapHashLabel.TabIndex = 10;
+            this.RectMapHashLabel.Text = "Hash";
+            // 
+            // RectMapLabel
+            // 
+            this.RectMapLabel.AutoSize = true;
+            this.RectMapLabel.Location = new System.Drawing.Point(76, 232);
+            this.RectMapLabel.Name = "RectMapLabel";
+            this.RectMapLabel.Size = new System.Drawing.Size(51, 13);
+            this.RectMapLabel.TabIndex = 12;
+            this.RectMapLabel.Text = "RectMap";
+            this.RectMapLabel.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // CaptureButton
+            // 
+            this.CaptureButton.Location = new System.Drawing.Point(13, 397);
+            this.CaptureButton.Name = "CaptureButton";
+            this.CaptureButton.Size = new System.Drawing.Size(75, 23);
+            this.CaptureButton.TabIndex = 13;
+            this.CaptureButton.Text = "Capture";
+            this.CaptureButton.UseVisualStyleBackColor = true;
+            this.CaptureButton.Click += new System.EventHandler(this.CaptureButton_Click);
             // 
             // SceneSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 432);
-            this.Controls.Add(this.RectMapDataGrid);
+            this.Controls.Add(this.CaptureButton);
+            this.Controls.Add(this.RectMapLabel);
+            this.Controls.Add(this.RectMapHashBox);
+            this.Controls.Add(this.RectMapHashLabel);
+            this.Controls.Add(this.RectMapHeightBox);
+            this.Controls.Add(this.RectMapHeightLabel);
+            this.Controls.Add(this.RectMapWidthBox);
+            this.Controls.Add(this.RectMapWidthLabel);
+            this.Controls.Add(this.RectMapYBox);
+            this.Controls.Add(this.RectMapYLabel);
+            this.Controls.Add(this.RectMapXBox);
+            this.Controls.Add(this.RectMapXLabel);
             this.Controls.Add(this.SceneTitleLabel);
             this.Controls.Add(this.SceneDataGrid);
             this.Name = "SceneSetupForm";
             this.Text = "SceneSetup";
             ((System.ComponentModel.ISupportInitialize)(this.SceneDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RectMapDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,6 +196,17 @@
 
         private System.Windows.Forms.DataGridView SceneDataGrid;
         private System.Windows.Forms.Label SceneTitleLabel;
-        private System.Windows.Forms.DataGridView RectMapDataGrid;
+        private System.Windows.Forms.Label RectMapXLabel;
+        private System.Windows.Forms.TextBox RectMapXBox;
+        private System.Windows.Forms.TextBox RectMapYBox;
+        private System.Windows.Forms.Label RectMapYLabel;
+        private System.Windows.Forms.TextBox RectMapWidthBox;
+        private System.Windows.Forms.Label RectMapWidthLabel;
+        private System.Windows.Forms.TextBox RectMapHeightBox;
+        private System.Windows.Forms.Label RectMapHeightLabel;
+        private System.Windows.Forms.TextBox RectMapHashBox;
+        private System.Windows.Forms.Label RectMapHashLabel;
+        private System.Windows.Forms.Label RectMapLabel;
+        private System.Windows.Forms.Button CaptureButton;
     }
 }

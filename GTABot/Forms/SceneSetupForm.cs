@@ -15,17 +15,15 @@ namespace GTABot.Forms
 {
     public partial class SceneSetupForm : Form
     {
+
+        public RectMap selectedRectMap { get; private set; }
         public SceneSetupForm(string s)
         {
             InitializeComponent();
            
             SceneTitleLabel.Text = s;
             SceneDataGrid.DataSource = Settings.Instance.Data.SceneConditions[s];
-            RectMapDataGrid.Columns.Add("rectmapX", "X");
-            RectMapDataGrid.Columns.Add("rectmapY", "X");
-            RectMapDataGrid.Columns.Add("rectmapWidth", "Width");
-            RectMapDataGrid.Columns.Add("rectmapHeight", "Height");
-            RectMapDataGrid.Columns.Add("rectmapHash", "Hash");
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,10 +31,26 @@ namespace GTABot.Forms
             
              var cellMap = SceneDataGrid[e.ColumnIndex, e.RowIndex].Value;
              RectMap map = (RectMap)cellMap;
+            selectedRectMap = map;
 
-             RectMapDataGrid.Rows.Add(map.X, map.Y, map.Width, map.Height, map.Hash);
+            RectMapXBox.Text = map.X.ToString();
+            RectMapYBox.Text = map.Y.ToString();
+            RectMapWidthBox.Text = map.Width.ToString();
+            RectMapHeightBox.Text = map.Height.ToString();
+            RectMapHashBox.Text = map.Hash.ToString();
 
 
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CaptureButton_Click(object sender, EventArgs e)
+        {
+            
 
         }
     }
