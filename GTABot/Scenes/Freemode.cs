@@ -61,7 +61,7 @@ namespace GTABot.Scenes
             script.Press(new DualShockState() { Cross = true });
             script.Sleep(350);
 
-            for (int i = 1; i <= 98; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 script.Press(new DualShockState() { DPad_Down = true });
                 script.Sleep(50);

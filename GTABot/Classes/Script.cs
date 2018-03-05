@@ -15,7 +15,6 @@ namespace GTABot
 
         public MainForm MainForm { get; private set; }
         public int Lap { get; private set; }
-
         
         public Script()
         {
@@ -26,6 +25,7 @@ namespace GTABot
 
             ScriptForm = MainForm = new MainForm();
 
+            
 
             Config.Scenes = new List<Scene>()
             {
@@ -40,6 +40,7 @@ namespace GTABot
         {
             base.Start();
             MainForm.SetStatus("Running", Color.Green);
+            SceneSetupForm.MyScript = this;
         }
 
         public override void Update()

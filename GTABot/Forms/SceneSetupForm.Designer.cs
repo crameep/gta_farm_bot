@@ -42,7 +42,10 @@
             this.RectMapHashLabel = new System.Windows.Forms.Label();
             this.RectMapLabel = new System.Windows.Forms.Label();
             this.CaptureButton = new System.Windows.Forms.Button();
+            this.SceneSetupPictureBox = new System.Windows.Forms.PictureBox();
+            this.SceneSetupSaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SceneDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SceneSetupPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // SceneDataGrid
@@ -165,11 +168,32 @@
             this.CaptureButton.UseVisualStyleBackColor = true;
             this.CaptureButton.Click += new System.EventHandler(this.CaptureButton_Click);
             // 
+            // SceneSetupPictureBox
+            // 
+            this.SceneSetupPictureBox.Location = new System.Drawing.Point(198, 248);
+            this.SceneSetupPictureBox.Name = "SceneSetupPictureBox";
+            this.SceneSetupPictureBox.Size = new System.Drawing.Size(339, 172);
+            this.SceneSetupPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.SceneSetupPictureBox.TabIndex = 14;
+            this.SceneSetupPictureBox.TabStop = false;
+            // 
+            // SceneSetupSaveButton
+            // 
+            this.SceneSetupSaveButton.Location = new System.Drawing.Point(94, 397);
+            this.SceneSetupSaveButton.Name = "SceneSetupSaveButton";
+            this.SceneSetupSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SceneSetupSaveButton.TabIndex = 15;
+            this.SceneSetupSaveButton.Text = "Save";
+            this.SceneSetupSaveButton.UseVisualStyleBackColor = true;
+            this.SceneSetupSaveButton.Click += new System.EventHandler(this.SceneSetupSaveButton_Click);
+            // 
             // SceneSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 432);
+            this.Controls.Add(this.SceneSetupSaveButton);
+            this.Controls.Add(this.SceneSetupPictureBox);
             this.Controls.Add(this.CaptureButton);
             this.Controls.Add(this.RectMapLabel);
             this.Controls.Add(this.RectMapHashBox);
@@ -187,6 +211,7 @@
             this.Name = "SceneSetupForm";
             this.Text = "SceneSetup";
             ((System.ComponentModel.ISupportInitialize)(this.SceneDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SceneSetupPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +233,7 @@
         private System.Windows.Forms.Label RectMapHashLabel;
         private System.Windows.Forms.Label RectMapLabel;
         private System.Windows.Forms.Button CaptureButton;
+        private System.Windows.Forms.PictureBox SceneSetupPictureBox;
+        private System.Windows.Forms.Button SceneSetupSaveButton;
     }
 }
